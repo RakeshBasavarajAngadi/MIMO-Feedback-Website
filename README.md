@@ -130,9 +130,53 @@ MIMO-Feedback-Website/
 │       ├── favicon.svg              # Vector browser tab icon
 │       ├── botanical-lily-left.svg  # Custom white lily & dark botanical SVG
 │       └── botanical-lily-right.svg # Complementing botanical SVG
-├── firebase.js           # Firebase modular SDK preparation file (Phase 2 ready)
+├── firebase.js           # Firebase modular SDK integration & Firestore submission module
 ├── README.md             # Complete documentation and branding guide
 └── .gitignore            # Git exclusion rules for secrets, OS files, and caches
+```
+
+---
+
+## 🔥 Firebase Firestore Integration & Security Rules
+
+### Integration Architecture
+- **SDK:** Official Firebase Modular JavaScript SDK v10 (ES Module via `https://www.gstatic.com/firebasejs/10.12.0/`).
+- **Target Collection:** `"feedback"`.
+- **Document Schema:**
+  - `name`: string (Submitter's name, 2–100 chars)
+  - `email`: string (Valid RFC email address)
+  - `rating`: number (Integer 1 to 5)
+  - `message`: string (15–1,000 chars)
+  - `createdAt`: serverTimestamp (Cloud Firestore server-generated timestamp)
+
+### Production-Grade Firestore Security Rules
+To secure your public feedback form against spam, malicious modifications, and unauthorized data extraction, copy and paste the following rules into:
+**Firebase Console > Firestore Database > Rules**:
+
+```javascript
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /feedback/{feedbackId} {
+      // Allow any public visitor to submit valid feedback only
+      allow create: if request.resource.data.name is string
+                    && request.resource.data.name.size() >= 2
+                    && request.resource.data.name.size() <= 100
+                    && request.resource.data.email is string
+                    && request.resource.data.email.size() <= 150
+                    && request.resource.data.rating is int
+                    && request.resource.data.rating >= 1
+                    && request.resource.data.rating <= 5
+                    && request.resource.data.message is string
+                    && request.resource.data.message.size() >= 15
+                    && request.resource.data.message.size() <= 1000
+                    && request.resource.data.createdAt == request.time;
+                    
+      // Strictly prevent public reads, updates, and deletes to protect user privacy
+      allow read, update, delete: if false;
+    }
+  }
+}
 ```
 
 ---

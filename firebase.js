@@ -1,25 +1,19 @@
 /**
  * ==============================================================================
- * MIMO Feedback Collection Website - Firebase Firestore Integration (Preparation)
+ * MIMO Feedback Collection Website - Cloud Firestore Integration Module
  * ==============================================================================
- * PHASE: Phase 2 Preparation
- *
- * NOTE FOR INTERNSHIP EVALUATOR / DEVELOPER:
- * This file is prepared for the upcoming Phase 2 integration using the modern
- * Firebase Modular SDK (v10+). In accordance with the project guidelines:
- * 1. No fake credentials or mock tokens are hardcoded.
- * 2. No active connections to Firebase are initialized yet.
- * 3. Security best practices are documented below.
- *
- * Follow the setup guide below when you are ready to connect Cloud Firestore.
+ * Technology: Firebase Modular SDK v10 (Browser ES Modules via official CDN)
+ * Database: Cloud Firestore
+ * Collection: "feedback"
+ * Document Structure:
+ *   - name: string (Full name of submitter)
+ *   - email: string (Email address of submitter)
+ *   - rating: number (Integer 1 to 5)
+ *   - message: string (Feedback message)
+ *   - createdAt: serverTimestamp (Firestore Server Timestamp)
  * ==============================================================================
  */
 
-/*
-// =============================================================================
-// STEP 1: Uncomment Firebase Modular SDK Imports (CDN or NPM bundler)
-// =============================================================================
-// If using pure Vanilla JavaScript via browser ES modules:
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import { 
   getFirestore, 
@@ -27,17 +21,12 @@ import {
   addDoc, 
   serverTimestamp 
 } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
-*/
 
 // =============================================================================
-// STEP 2: Add your Firebase project configuration
+// Firebase Web App Configuration
 // =============================================================================
-// Replace the placeholder values with your real configuration from the Firebase Console:
-// 1. Visit: https://console.firebase.google.com
-// 2. Select or create your project: "mimo-feedback-collection"
-// 3. Go to Project Settings -> General -> "Your apps" -> Add Web App (</>)
-// 4. Copy the config object provided and paste the keys below:
-
+// Paste the exact configuration from the Firebase Console:
+// (Firebase Console -> Project Settings -> General -> Your apps -> Web App)
 export const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
@@ -47,81 +36,132 @@ export const firebaseConfig = {
   appId: "YOUR_APP_ID"
 };
 
-/*
-// =============================================================================
-// STEP 3: Initialize Firebase App & Firestore Database Instance
-// =============================================================================
-// Uncomment when credentials have been configured:
+/**
+ * Check whether valid production credentials have been configured
+ */
+export const isFirebaseConfigured = Boolean(
+  firebaseConfig.apiKey &&
+  firebaseConfig.apiKey !== "YOUR_API_KEY" &&
+  firebaseConfig.projectId &&
+  firebaseConfig.projectId !== "YOUR_PROJECT_ID"
+);
 
-// const app = initializeApp(firebaseConfig);
-// export const db = getFirestore(app);
-*/
+// Initialize Firebase App & Firestore Database Instance
+let app;
+let db = null;
+
+try {
+  if (isFirebaseConfigured) {
+    app = initializeApp(firebaseConfig);
+    db = getFirestore(app);
+    console.info('[Firebase] Modular SDK initialized for project:', firebaseConfig.projectId);
+  } else {
+    console.warn('[Firebase] Configuration placeholders detected in firebase.js. Awaiting Firebase Console configuration.');
+  }
+} catch (initError) {
+  console.error('[Firebase] Initialization error:', initError);
+}
+
+// Export the Firestore instance
+export { db };
 
 // =============================================================================
-// STEP 4: Prepared Feedback Submission Helper for Phase 2
+// Reusable Feedback Submission Handler for Cloud Firestore
 // =============================================================================
 /**
- * Submits feedback document to Cloud Firestore
- * Collection name: "feedbacks"
+ * Submits feedback document to Cloud Firestore collection "feedback"
  *
  * @param {Object} feedbackData
- * @param {string} feedbackData.fullName - Submitter's full name
- * @param {string} feedbackData.emailAddress - Submitter's email
+ * @param {string} feedbackData.name - Submitter's full name
+ * @param {string} feedbackData.email - Submitter's email address
  * @param {number} feedbackData.rating - Star rating from 1 to 5
  * @param {string} feedbackData.message - Submitter's feedback message
- * @returns {Promise<string>} - Returns the generated Firestore Document ID
+ * @returns {Promise<string>} - Resolves with the new Firestore Document ID on success
+ * @throws {Error} - Rejects with a descriptive error message on failure
  */
 export async function submitFeedbackToFirestore(feedbackData) {
-  /*
-  // Uncomment and connect in Phase 2:
+  if (!isFirebaseConfigured || !db) {
+    throw new Error(
+      'Firebase is not yet configured. Please add your web app configuration from the Firebase Console into firebase.js.'
+    );
+  }
+
+  // Validate required payload fields before attempting database write
+  if (!feedbackData.name || typeof feedbackData.name !== 'string' || feedbackData.name.trim().length < 2) {
+    throw new Error('A valid name with at least 2 characters is required.');
+  }
+  if (!feedbackData.email || typeof feedbackData.email !== 'string' || !feedbackData.email.includes('@')) {
+    throw new Error('A valid email address is required.');
+  }
+  const ratingValue = Number(feedbackData.rating);
+  if (!ratingValue || ratingValue < 1 || ratingValue > 5) {
+    throw new Error('A valid experience rating between 1 and 5 stars is required.');
+  }
+  if (!feedbackData.message || typeof feedbackData.message !== 'string' || feedbackData.message.trim().length < 15) {
+    throw new Error('A feedback message with at least 15 characters is required.');
+  }
+
   try {
-    const feedbackCollectionRef = collection(db, 'feedbacks');
+    const feedbackCollectionRef = collection(db, 'feedback');
+    
+    // Create new document in "feedback" collection using addDoc() and serverTimestamp()
     const docRef = await addDoc(feedbackCollectionRef, {
-      fullName: feedbackData.fullName,
-      emailAddress: feedbackData.emailAddress,
-      rating: Number(feedbackData.rating),
-      message: feedbackData.message,
-      submittedAt: serverTimestamp(),
-      clientTimestamp: feedbackData.submittedAt || new Date().toISOString(),
-      status: 'pending_review'
+      name: feedbackData.name.trim(),
+      email: feedbackData.email.trim(),
+      rating: ratingValue,
+      message: feedbackData.message.trim(),
+      createdAt: serverTimestamp()
     });
 
-    console.log('[Firebase Firestore] Document written with ID:', docRef.id);
+    console.info('[Firebase Firestore] Document successfully stored with ID:', docRef.id);
     return docRef.id;
   } catch (error) {
-    console.error('[Firebase Firestore] Error adding feedback document:', error);
-    throw error;
-  }
-  */
+    console.error('[Firebase Firestore] Error writing to "feedback" collection:', error);
 
-  console.info('[Firebase Preparation] submitFeedbackToFirestore called with payload:', feedbackData);
-  console.info('[Firebase Preparation] Cloud Firestore connection will be enabled in Phase 2.');
-  return 'mock-phase-1-doc-id';
-}
-
-/*
-// =============================================================================
-// STEP 5: Recommended Firestore Security Rules for "feedbacks" Collection
-// =============================================================================
-// Copy and paste into: Firebase Console -> Firestore Database -> Rules tab
-/*
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /feedbacks/{feedbackId} {
-      // Allow any visitor to create a feedback entry if valid
-      allow create: if request.resource.data.fullName is string
-                    && request.resource.data.fullName.size() >= 2
-                    && request.resource.data.emailAddress is string
-                    && request.resource.data.rating is int
-                    && request.resource.data.rating >= 1
-                    && request.resource.data.rating <= 5
-                    && request.resource.data.message is string
-                    && request.resource.data.message.size() >= 15;
-                    
-      // Only authenticated team members can read or delete feedback entries
-      allow read, update, delete: if request.auth != null;
+    // Friendly error messaging according to Firebase Firestore error codes
+    let userMessage = 'Unable to save feedback to the database. Please try again.';
+    if (error.code === 'permission-denied') {
+      userMessage = 'Database permission denied. Please verify your Firestore Security Rules in the Firebase Console.';
+    } else if (error.code === 'unavailable') {
+      userMessage = 'The database service is currently unavailable. Please check your network connection and try again.';
+    } else if (error.code === 'resource-exhausted') {
+      userMessage = 'Database quota limit reached. Please try again later.';
+    } else if (error.message) {
+      userMessage = error.message;
     }
+
+    throw new Error(userMessage);
   }
 }
-*/
+
+// =============================================================================
+// Firestore Security Rules (Prepared for Firebase Console)
+// =============================================================================
+/**
+ * Copy and paste the following rules into:
+ * Firebase Console -> Firestore Database -> Rules tab
+ *
+ * rules_version = '2';
+ * service cloud.firestore {
+ *   match /databases/{database}/documents {
+ *     match /feedback/{feedbackId} {
+ *       // Allow public visitors to create a feedback entry with valid fields only
+ *       allow create: if request.resource.data.name is string
+ *                     && request.resource.data.name.size() >= 2
+ *                     && request.resource.data.name.size() <= 100
+ *                     && request.resource.data.email is string
+ *                     && request.resource.data.email.size() <= 150
+ *                     && request.resource.data.rating is int
+ *                     && request.resource.data.rating >= 1
+ *                     && request.resource.data.rating <= 5
+ *                     && request.resource.data.message is string
+ *                     && request.resource.data.message.size() >= 15
+ *                     && request.resource.data.message.size() <= 1000
+ *                     && request.resource.data.createdAt == request.time;
+ *                     
+ *       // Disallow public reads, updates, and deletes to protect user privacy
+ *       allow read, update, delete: if false;
+ *     }
+ *   }
+ * }
+ */

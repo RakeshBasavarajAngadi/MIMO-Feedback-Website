@@ -7,11 +7,12 @@
  * - Module: Interactive 5-Star Rating Component
  * - Module: Real-Time Character Counter
  * - Module: Form Validation Engine
- * - Module: Submission Handler & Simulated Delay
+ * - Module: Cloud Firestore Submission Handler via Modular SDK
  * - Module: Success Confirmation UI & Form Reset
- * - Module: Future Firebase Integration Stubs (Phase 2)
  * ==============================================================================
  */
+
+import { submitFeedbackToFirestore } from '../firebase.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
@@ -24,6 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const successCard = document.getElementById('successCard');
   const submitBtn = document.getElementById('submitBtn');
   const resetFormBtn = document.getElementById('resetFormBtn');
+
+  // Form Global Error Banner
+  const formGlobalError = document.getElementById('formGlobalError');
+  const formGlobalErrorMessage = document.getElementById('formGlobalErrorMessage');
 
   // Input Fields & Groups
   const fullNameInput = document.getElementById('fullName');
@@ -73,7 +78,27 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // ----------------------------------------------------------------------------
-  // 3. Interactive Star Rating Component
+  // 3. Global Form Error Management
+  // ----------------------------------------------------------------------------
+  function showGlobalError(message) {
+    if (formGlobalError && formGlobalErrorMessage) {
+      formGlobalErrorMessage.textContent = message;
+      formGlobalError.style.display = 'flex';
+      formGlobalError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  function clearGlobalError() {
+    if (formGlobalError) {
+      formGlobalError.style.display = 'none';
+      if (formGlobalErrorMessage) {
+        formGlobalErrorMessage.textContent = '';
+      }
+    }
+  }
+
+  // ----------------------------------------------------------------------------
+  // 4. Interactive Star Rating Component
   // ----------------------------------------------------------------------------
   /**
    * Updates visual highlight of stars based on current active / preview rating
@@ -116,6 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function selectRating(rating) {
     state.selectedRating = rating;
     renderStars(rating, false);
+    clearGlobalError();
 
     // Clear rating error if previously shown
     clearFieldError(ratingGroup, ratingError);
@@ -174,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ----------------------------------------------------------------------------
-  // 4. Character Counter for Feedback Message
+  // 5. Character Counter for Feedback Message
   // ----------------------------------------------------------------------------
   function updateCharCounter() {
     const textLength = feedbackTextarea.value.length;
@@ -197,13 +223,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   feedbackTextarea.addEventListener('input', () => {
     updateCharCounter();
+    clearGlobalError();
     if (feedbackGroup.classList.contains('has-error')) {
       validateFeedbackMessage();
     }
   });
 
   // ----------------------------------------------------------------------------
-  // 5. Validation Engine
+  // 6. Validation Engine
   // ----------------------------------------------------------------------------
 
   /**
@@ -250,7 +277,6 @@ document.addEventListener('DOMContentLoaded', () => {
       showFieldError(fullNameGroup, fullNameError, 'Name must contain at least 2 characters.');
       return false;
     }
-    // Check reasonable name regex (allows letters, spaces, hyphens, periods, apostrophes)
     const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ\s'\-.]+$/;
     if (!nameRegex.test(value)) {
       showFieldError(fullNameGroup, fullNameError, 'Please enter a valid name using alphabet letters.');
@@ -270,7 +296,6 @@ document.addEventListener('DOMContentLoaded', () => {
       showFieldError(emailGroup, emailError, 'Email address is required.');
       return false;
     }
-    // Standard RFC-compliant email regex pattern
     const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$/;
     if (!emailRegex.test(value)) {
       showFieldError(emailGroup, emailError, 'Please provide a valid email format (e.g. name@domain.com).');
@@ -326,11 +351,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Real-time input listeners for automatic error clearing
   fullNameInput.addEventListener('input', () => {
+    clearGlobalError();
     if (fullNameGroup.classList.contains('has-error')) validateFullName();
   });
   fullNameInput.addEventListener('blur', validateFullName);
 
   emailInput.addEventListener('input', () => {
+    clearGlobalError();
     if (emailGroup.classList.contains('has-error')) validateEmail();
   });
   emailInput.addEventListener('blur', validateEmail);
@@ -338,7 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
   feedbackTextarea.addEventListener('blur', validateFeedbackMessage);
 
   // ----------------------------------------------------------------------------
-  // 6. Form Submission & Frontend Feedback Flow
+  // 7. Form Submission & Firestore Flow
   // ----------------------------------------------------------------------------
 
   /**
@@ -360,15 +387,12 @@ document.addEventListener('DOMContentLoaded', () => {
    * @param {Object} feedbackData
    */
   function showSuccessScreen(feedbackData) {
-    // Populate summary card
-    summaryName.textContent = feedbackData.fullName;
-    summaryEmail.textContent = feedbackData.emailAddress;
+    summaryName.textContent = feedbackData.name;
+    summaryEmail.textContent = feedbackData.email;
 
-    // Render star icons in summary
     const starIcons = '★'.repeat(feedbackData.rating) + '☆'.repeat(5 - feedbackData.rating);
     summaryRating.textContent = `${starIcons} (${feedbackData.rating} / 5)`;
 
-    // Truncate message excerpt if lengthy
     const excerpt = feedbackData.message.length > 80
       ? feedbackData.message.slice(0, 80) + '...'
       : feedbackData.message;
@@ -379,7 +403,6 @@ document.addEventListener('DOMContentLoaded', () => {
     form.style.display = 'none';
     successCard.style.display = 'block';
 
-    // Scroll card smoothly into view
     successCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
@@ -388,24 +411,22 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   function resetForm() {
     form.reset();
+    clearGlobalError();
     state.selectedRating = 0;
     state.hoveredRating = 0;
     renderStars(0, false);
     updateCharCounter();
 
-    // Clear all validation states
     [fullNameGroup, emailGroup, ratingGroup, feedbackGroup].forEach((group) => {
       group.classList.remove('has-error', 'is-valid');
       const input = group.querySelector('.form-input, .form-textarea');
       if (input) input.removeAttribute('aria-invalid');
     });
 
-    // Reset star keyboard tab focus
     starButtons.forEach((btn, idx) => {
       btn.tabIndex = idx === 0 ? 0 : -1;
     });
 
-    // Swap back screens
     successCard.style.display = 'none';
     cardHeader.style.display = 'block';
     form.style.display = 'flex';
@@ -416,15 +437,16 @@ document.addEventListener('DOMContentLoaded', () => {
   resetFormBtn.addEventListener('click', resetForm);
 
   /**
-   * Main Form Submission Handler
+   * Main Form Submission Handler connected to Cloud Firestore
    */
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    clearGlobalError();
 
-    // Prevent double submission
+    // Prevent duplicate submission while submission is in progress
     if (state.isSubmitting) return;
 
-    // Run all validations
+    // Run client validation
     const isNameValid = validateFullName();
     const isEmailValid = validateEmail();
     const isRatingValid = validateRating();
@@ -433,7 +455,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const isFormValid = isNameValid && isEmailValid && isRatingValid && isMessageValid;
 
     if (!isFormValid) {
-      // Find first invalid element and focus it
       const firstInvalid = form.querySelector('.has-error .form-input, .has-error .form-textarea, .has-error .star-btn');
       if (firstInvalid) {
         firstInvalid.focus();
@@ -441,39 +462,30 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Prepare clean feedback data object
-    const feedbackData = {
-      fullName: fullNameInput.value.trim(),
-      emailAddress: emailInput.value.trim(),
+    // Prepare payload matching the requested Firestore schema
+    const feedbackPayload = {
+      name: fullNameInput.value.trim(),
+      email: emailInput.value.trim(),
       rating: state.selectedRating,
-      message: feedbackTextarea.value.trim(),
-      submittedAt: new Date().toISOString(),
-      userAgent: navigator.userAgent
+      message: feedbackTextarea.value.trim()
     };
 
-    // Log feedback payload for developer review
-    console.log('[MIMO Feedback] Validated payload ready for Phase 2 Firestore:', feedbackData);
+    console.log('[MIMO Feedback] Submitting feedback payload to Firestore:', feedbackPayload);
 
-    // Set Loading State
+    // Set loading state (disables button & activates spinner)
     setLoadingState(true);
 
     try {
-      /* =========================================================================
-       * PHASE 2 INTEGRATION HOOK:
-       * When Firebase Firestore is enabled in Phase 2, invoke:
-       * 
-       *   import { submitFeedbackToFirestore } from '../firebase.js';
-       *   await submitFeedbackToFirestore(feedbackData);
-       *
-       * For Phase 1 (Frontend Demonstration), we simulate network latency:
-       * ========================================================================= */
-      await new Promise((resolve) => setTimeout(resolve, 1100));
+      // Submit to Cloud Firestore collection "feedback"
+      const docId = await submitFeedbackToFirestore(feedbackPayload);
+      console.log('[MIMO Feedback] Firestore confirmed submission with doc ID:', docId);
 
-      // Display Success Confirmation UI
-      showSuccessScreen(feedbackData);
+      // Show the success screen ONLY after Firestore confirms successful submission
+      showSuccessScreen(feedbackPayload);
     } catch (error) {
-      console.error('[MIMO Feedback] Error processing submission:', error);
-      alert('An unexpected error occurred while submitting. Please try again.');
+      console.error('[MIMO Feedback] Submission error:', error);
+      // Show meaningful error message in form UI without revealing sensitive internals
+      showGlobalError(error.message || 'An unexpected error occurred while saving your feedback to Firestore.');
     } finally {
       setLoadingState(false);
     }

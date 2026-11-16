@@ -339,6 +339,16 @@
             </div>
           </div>
 
+          <!-- Form-level Global Error Banner (Firestore & Network Errors) -->
+          <div class="form-global-error" id="formGlobalError" role="alert" style="display: none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span id="formGlobalErrorMessage"></span>
+          </div>
+
           <!-- Field E: Submit Button (MIMO Blue) -->
           <div class="form-actions">
             <button type="submit" id="submitBtn" class="btn-primary">
@@ -433,7 +443,7 @@
     </div>
   </footer>
 
-  <!-- Main JavaScript File -->
-  <script src="js/script.js"></script>
+  <!-- Main JavaScript File (Browser ES Module) -->
+  <script type="module" src="js/script.js"></script>
 </body>
 </html>
