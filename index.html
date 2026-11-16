@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>MIMO Feedback | Share Your Experience</title>
+  
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="Share your experience and thoughts with the MIMO team. Help us improve the learning platform for millions of developers worldwide.">
+  <meta name="theme-color" content="#2563EB">
+  <meta property="og:title" content="MIMO Feedback | Share Your Experience">
+  <meta property="og:description" content="Help us make MIMO better. Submit your feedback, rating, and suggestions.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       Site Header
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-wrapper" aria-label="MIMO Feedback Home">
+        <img src="assets/images/logo.svg" alt="MIMO Logo" class="brand-logo-img" width="130" height="36">
+        <span class="header-badge">
+          <span class="badge-pulse-dot" aria-hidden="true"></span>
+          Feedback Portal
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="Main Navigation">
+        <a href="#feedback-form-section" class="nav-link active">Share Feedback</a>
+        <a href="#why-feedback" class="nav-link">Why Feedback Matters</a>
+        <span class="nav-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          Direct to Product Team
+        </span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       Hero Section
+       ========================================================================= -->
+  <section class="hero-section" id="hero">
+    <div class="container">
+      <div class="hero-pill">
+        <svg class="hero-pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+        </svg>
+        <span>Continuous Learning & Improvement</span>
+      </div>
+
+      <h1 class="hero-title">
+        Your Experience <span class="hero-title-highlight">Matters.</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Help us make MIMO better. Share your experience and let us know what you think.
+      </p>
+
+      <div class="hero-badges" id="why-feedback">
+        <div class="hero-feature-item">
+          <svg class="hero-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span>Under 2 minutes</span>
+        </div>
+        <div class="hero-feature-item">
+          <svg class="hero-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+          <span>Real-time Validation</span>
+        </div>
+        <div class="hero-feature-item">
+          <svg class="hero-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          <span>Reviewed by Engineers & Designers</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Feedback Form Section
+       ========================================================================= -->
+  <main class="feedback-section" id="feedback-form-section">
+    <div class="container feedback-wrapper">
+      <div class="feedback-card">
+        
+        <!-- Form Header Inside Card -->
+        <div class="card-header" id="cardHeader">
+          <h2 class="card-header-title">
+            <span class="card-header-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </span>
+            Community Experience Review
+          </h2>
+          <p class="card-header-desc">
+            We value your honest feedback to improve coding lessons, interactive challenges, and overall usability.
+          </p>
+        </div>
+
+        <!-- Feedback Form -->
+        <form id="feedbackForm" class="feedback-form" novalidate>
+          
+          <!-- Field A: Full Name -->
+          <div class="form-group" id="fullNameGroup">
+            <label for="fullName" class="form-label">
+              <span>Full Name <span class="required-asterisk" aria-hidden="true">*</span></span>
+              <span class="field-hint">Your legal or display name</span>
+            </label>
+            <div class="input-wrapper">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <input 
+                type="text" 
+                id="fullName" 
+                name="fullName" 
+                class="form-input" 
+                placeholder="e.g., Alex Johnson" 
+                autocomplete="name"
+                required
+                aria-required="true"
+                aria-describedby="fullNameError"
+              >
+            </div>
+            <div class="error-message" id="fullNameError" role="alert">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <span>Please enter your full name (minimum 2 characters).</span>
+            </div>
+          </div>
+
+          <!-- Field B: Email Address -->
+          <div class="form-group" id="emailAddressGroup">
+            <label for="emailAddress" class="form-label">
+              <span>Email Address <span class="required-asterisk" aria-hidden="true">*</span></span>
+              <span class="field-hint">We will never spam you</span>
+            </label>
+            <div class="input-wrapper">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <input 
+                type="email" 
+                id="emailAddress" 
+                name="emailAddress" 
+                class="form-input" 
+                placeholder="e.g., alex.johnson@example.com" 
+                autocomplete="email"
+                required
+                aria-required="true"
+                aria-describedby="emailAddressError"
+              >
+            </div>
+            <div class="error-message" id="emailAddressError" role="alert">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <span>Please provide a valid email address (e.g., name@domain.com).</span>
+            </div>
+          </div>
+
+          <!-- Field C: Experience Rating (Interactive 5-Star) -->
+          <div class="form-group rating-group" id="ratingGroup">
+            <label class="form-label">
+              <span>How would you rate your experience? <span class="required-asterisk" aria-hidden="true">*</span></span>
+              <span class="field-hint">Select 1 to 5 stars</span>
+            </label>
+
+            <div class="rating-container" id="ratingContainer">
+              <div 
+                class="rating-stars" 
+                id="ratingStars" 
+                role="radiogroup" 
+                aria-label="Experience rating from 1 to 5 stars"
+                aria-required="true"
+              >
+                <!-- Star 1 -->
+                <button 
+                  type="button" 
+                  class="star-btn" 
+                  data-rating="1" 
+                  role="radio" 
+                  aria-checked="false" 
+                  aria-label="Rate 1 star - Poor"
+                  tabindex="0"
+                >
+                  <svg class="star-icon" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </button>
+
+                <!-- Star 2 -->
+                <button 
+                  type="button" 
+                  class="star-btn" 
+                  data-rating="2" 
+                  role="radio" 
+                  aria-checked="false" 
+                  aria-label="Rate 2 stars - Fair"
+                  tabindex="-1"
+                >
+                  <svg class="star-icon" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </button>
+
+                <!-- Star 3 -->
+                <button 
+                  type="button" 
+                  class="star-btn" 
+                  data-rating="3" 
+                  role="radio" 
+                  aria-checked="false" 
+                  aria-label="Rate 3 stars - Good"
+                  tabindex="-1"
+                >
+                  <svg class="star-icon" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </button>
+
+                <!-- Star 4 -->
+                <button 
+                  type="button" 
+                  class="star-btn" 
+                  data-rating="4" 
+                  role="radio" 
+                  aria-checked="false" 
+                  aria-label="Rate 4 stars - Very Good"
+                  tabindex="-1"
+                >
+                  <svg class="star-icon" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </button>
+
+                <!-- Star 5 -->
+                <button 
+                  type="button" 
+                  class="star-btn" 
+                  data-rating="5" 
+                  role="radio" 
+                  aria-checked="false" 
+                  aria-label="Rate 5 stars - Excellent"
+                  tabindex="-1"
+                >
+                  <svg class="star-icon" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Rating Description & Badge -->
+              <div class="rating-feedback">
+                <span id="ratingDescription" class="rating-description">Click a star to rate</span>
+                <span id="ratingBadge" class="rating-badge">0 / 5 stars</span>
+              </div>
+            </div>
+
+            <div class="error-message" id="ratingError" role="alert">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <span>Please select an experience rating from 1 to 5 stars.</span>
+            </div>
+          </div>
+
+          <!-- Field D: Feedback Message -->
+          <div class="form-group" id="feedbackMessageGroup">
+            <label for="feedbackMessage" class="form-label">
+              <span>Feedback Message <span class="required-asterisk" aria-hidden="true">*</span></span>
+              <span class="field-hint">Minimum 15 characters</span>
+            </label>
+            <textarea 
+              id="feedbackMessage" 
+              name="feedbackMessage" 
+              class="form-textarea" 
+              rows="4" 
+              maxlength="1000"
+              placeholder="Tell us what you liked, what challenged you, or any suggestions you have for the MIMO app..."
+              required
+              aria-required="true"
+              aria-describedby="feedbackMessageError feedbackHint"
+            ></textarea>
+
+            <div class="textarea-footer" id="feedbackHint">
+              <span class="field-hint">Constructive feedback helps our community flourish</span>
+              <div class="char-counter-wrapper">
+                <span id="charCounter" class="char-counter">0</span>
+                <span>/ 1000 characters</span>
+              </div>
+            </div>
+
+            <div class="error-message" id="feedbackMessageError" role="alert">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <span>Please share at least 15 characters describing your experience.</span>
+            </div>
+          </div>
+
+          <!-- Field E: Submit Button -->
+          <div class="form-actions">
+            <button type="submit" id="submitBtn" class="btn-primary">
+              <span class="btn-spinner" aria-hidden="true"></span>
+              <span class="btn-text-content">Submit Feedback</span>
+              <span class="btn-loading-text">Submitting Feedback...</span>
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </div>
+
+        </form>
+
+        <!-- ===================================================================
+             Success Confirmation UI
+             =================================================================== -->
+        <div id="successCard" class="success-card" role="region" aria-live="polite">
+          <div class="success-icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+
+          <h3 class="success-title">Thank you for sharing your experience!</h3>
+          <p class="success-desc">
+            Your feedback helps us make MIMO better. We have received your response and our product team appreciates your thoughts.
+          </p>
+
+          <!-- Summary Preview of Submitted Feedback -->
+          <div class="success-summary">
+            <div class="summary-row">
+              <span class="summary-label">Submitted by:</span>
+              <span class="summary-value" id="summaryName">—</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Email:</span>
+              <span class="summary-value" id="summaryEmail">—</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Rating:</span>
+              <span class="summary-value summary-stars" id="summaryRating">—</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Message excerpt:</span>
+              <span class="summary-value" id="summaryMessage">—</span>
+            </div>
+          </div>
+
+          <button type="button" id="resetFormBtn" class="btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="1 4 1 10 7 10"></polyline>
+              <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+            </svg>
+            <span>Submit Another Feedback</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       Site Footer
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="assets/images/logo.svg" alt="MIMO" class="footer-logo-img" width="110" height="30">
+          <p class="footer-appreciation">
+            Built with dedication for continuous learning. Every voice and review empowers us to create a better educational journey for everyone.
+          </p>
+        </div>
+
+        <ul class="footer-links">
+          <li><a href="#" class="footer-link">Privacy Policy</a></li>
+          <li><a href="#" class="footer-link">Terms of Service</a></li>
+          <li><a href="#" class="footer-link">Community Guidelines</a></li>
+          <li><a href="#" class="footer-link">Support & FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 MIMO. All rights reserved. Internship Evaluation Assignment.</p>
+        <div class="footer-status-pill">
+          <span class="status-dot"></span>
+          <span>Feedback System Active (Phase 1 Frontend)</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="js/script.js"></script>
+</body>
+</html>

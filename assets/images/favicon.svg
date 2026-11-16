@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="mimoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60A5FA" />
+      <stop offset="100%" stop-color="#93C5FD" />
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" rx="14" fill="url(#mimoGrad)" />
+  <!-- Stylized M shape -->
+  <path d="M12 34V18C12 15.7909 13.7909 14 16 14C17.3887 14 18.6186 14.708 19.3414 15.7901L24 22.7779L28.6586 15.7901C29.3814 14.708 30.6113 14 32 14C34.2091 14 36 15.7909 36 18V34" 
+        stroke="#FFFFFF" 
+        stroke-width="4.5" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" />
+  <circle cx="24" cy="31" r="2.75" fill="url(#accentGrad)" />
+</svg>
