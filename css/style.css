@@ -1,70 +1,75 @@
 /* ==========================================================================
    MIMO Feedback Collection Website - Design System & Stylesheet
-   Theme: Modern, Minimal & Inspired by MIMO Branding
-   Colors: MIMO Blue, Warm Beige, Cream, and Crisp White
+   Theme: Physical MIMO Kiosk Brand Identity
+   Palette: Warm Caramel (#B47B45), Deep Brown (#80532F), Warm Cream (#F2E9DC),
+            Light Beige (#E8D6C0), MIMO Blue (#1685D5), Charcoal (#242321), White (#FFFFFF)
+   Brand Slogans: "MAKE IT REAL" • "PRINT. MADE EASY."
+   Floral Branding: White Lilies & Dark Botanical Illustrations
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
    1. Design Tokens & CSS Variables
    -------------------------------------------------------------------------- */
 :root {
-  /* Brand Primary Colors */
-  --color-primary: #2563EB;          /* MIMO Tech Blue */
-  --color-primary-hover: #1D4ED8;    /* Deep Blue Hover */
-  --color-primary-active: #1E40AF;   /* Dark Blue Active */
-  --color-primary-light: #EFF6FF;   /* Soft Blue Tint */
-  --color-primary-subtle: #DBEAFE;  /* Light Blue Border/Accent */
-  
-  /* Accent Colors */
-  --color-accent-gold: #F59E0B;     /* Star Rating Gold */
-  --color-accent-gold-hover: #FBBF24;
-  --color-accent-gold-subtle: #FEF3C7;
-  
-  /* Feedback Semantic Colors */
-  --color-success: #10B981;
-  --color-success-bg: #ECFDF5;
-  --color-success-border: #A7F3D0;
-  --color-error: #EF4444;
+  /* Physical Kiosk Brand Colors */
+  --color-caramel: #B47B45;            /* Warm Caramel / Tan Brown Kiosk Body */
+  --color-caramel-hover: #A06B38;      /* Slightly deeper caramel hover */
+  --color-deep-brown: #80532F;         /* Deep Rich Wood / Leather Brown */
+  --color-deep-brown-dark: #623D20;    /* Darkest brand brown */
+  --color-cream: #F2E9DC;              /* Warm Cream Base */
+  --color-cream-light: #FAF6F0;        /* Light Cream Surface */
+  --color-light-beige: #E8D6C0;        /* Light Beige Accent */
+  --color-mimo-blue: #1685D5;          /* Bright Blue Digital Display */
+  --color-mimo-blue-hover: #126EAF;    /* Digital Blue Hover State */
+  --color-mimo-blue-active: #0E578B;   /* Digital Blue Active State */
+  --color-mimo-blue-light: #EBF5FC;   /* Very soft blue tint */
+  --color-charcoal: #242321;           /* Charcoal Typography */
+  --color-charcoal-muted: #54504A;     /* Secondary Body Typography */
+  --color-charcoal-subtle: #8A8277;    /* Subtle / Placeholder Text */
+  --color-white: #FFFFFF;              /* Crisp White Surface */
+
+  /* Neutral Surfaces & Warm Borders */
+  --color-bg-base: #F2E9DC;            /* Dominated by Warm Cream */
+  --color-bg-secondary: #E8D6C0;       /* Light Beige */
+  --color-surface-card: #FFFFFF;       /* Pure White Card Surface for Contrast */
+  --color-border-warm: #DFCEBB;        /* Warm Caramel / Sand Border */
+  --color-border-strong: #CBB49C;      /* Stronger Sand Border */
+  --color-border-focus: #1685D5;       /* MIMO Blue Input Focus */
+
+  /* Star Rating & Semantics */
+  --color-star-gold: #E0983A;          /* Warm Golden Caramel Star */
+  --color-star-gold-hover: #F2A847;    /* Bright Gold Star Preview */
+  --color-star-unselected: #D6C8B7;    /* Warm Grayed Sand Unselected Star */
+  --color-star-stroke: #A49381;
+  --color-success: #15803D;
+  --color-success-bg: #F0FDF4;
+  --color-success-border: #BBF7D0;
+  --color-error: #DC2626;
   --color-error-bg: #FEF2F2;
   --color-error-border: #FECACA;
-  
-  /* Neutral / Cream / Warm Beige Palette */
-  --color-bg-base: #FAF7F2;          /* Warm Cream Background */
-  --color-bg-secondary: #F3EFE6;     /* Warm Beige Accent */
-  --color-surface: #FFFFFF;          /* Pure White Card Surface */
-  --color-surface-hover: #FDFDFD;
-  
-  /* Text & Typography Colors */
-  --color-text-main: #0F172A;        /* Slate / Deep Charcoal */
-  --color-text-muted: #475569;       /* Slate Neutral Body */
-  --color-text-subtle: #94A3B8;      /* Placeholder / Subtle Text */
-  
-  /* Borders & Dividers */
-  --color-border: #E8E3D9;           /* Warm Sand Border */
-  --color-border-focus: #2563EB;     /* Focus Border */
-  --color-border-light: #F1ECE3;     /* Light Divider */
-  
-  /* Elevation Shadows */
-  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.03);
-  --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
-  --shadow-lg: 0 12px 32px -4px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
-  --shadow-card: 0 16px 40px -8px rgba(37, 99, 235, 0.07), 0 4px 16px rgba(15, 23, 42, 0.04);
-  --shadow-glow: 0 0 0 4px rgba(37, 99, 235, 0.14);
-  
+
+  /* Elevation Shadows with Warm Brown Undertones */
+  --shadow-warm-sm: 0 1px 3px rgba(36, 35, 33, 0.04), 0 1px 2px rgba(128, 83, 47, 0.04);
+  --shadow-warm-md: 0 4px 14px -2px rgba(128, 83, 47, 0.08), 0 2px 6px -1px rgba(36, 35, 33, 0.04);
+  --shadow-card: 0 20px 48px -10px rgba(128, 83, 47, 0.12), 0 4px 16px rgba(36, 35, 33, 0.04);
+  --shadow-card-hover: 0 24px 56px -12px rgba(128, 83, 47, 0.16), 0 6px 20px rgba(36, 35, 33, 0.06);
+  --shadow-blue-glow: 0 0 0 4px rgba(22, 133, 213, 0.18);
+  --shadow-caramel-glow: 0 0 0 4px rgba(180, 123, 69, 0.18);
+
   /* Border Radii */
   --radius-sm: 8px;
   --radius-md: 12px;
-  --radius-lg: 16px;
+  --radius-lg: 18px;
   --radius-xl: 24px;
   --radius-full: 9999px;
-  
+
   /* Transitions */
-  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-spring: 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
-  
+  --transition-fast: 160ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 260ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 360ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
   /* Typography */
-  --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 /* --------------------------------------------------------------------------
@@ -82,7 +87,7 @@ html {
   font-family: var(--font-family);
   font-size: 16px;
   line-height: 1.5;
-  color: var(--color-text-main);
+  color: var(--color-charcoal);
   background-color: var(--color-bg-base);
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -95,9 +100,11 @@ body {
   flex-direction: column;
   position: relative;
   overflow-x: hidden;
+  /* Warm Cream base with subtle caramel & beige radial auras */
   background: 
-    radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.04) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 12% 16%, rgba(180, 123, 69, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 88% 78%, rgba(22, 133, 213, 0.05) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(232, 214, 192, 0.4) 0%, transparent 70%),
     var(--color-bg-base);
 }
 
@@ -125,16 +132,16 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   3. Header Navigation Section
+   3. Header Navigation Section (Warm Cream & Subtle Caramel Details)
    -------------------------------------------------------------------------- */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background-color: rgba(250, 247, 242, 0.85);
+  background-color: rgba(242, 233, 220, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1.5px solid var(--color-border-warm);
   transition: all var(--transition-normal);
 }
 
@@ -142,13 +149,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 4.5rem;
+  height: 4.75rem;
 }
 
 .brand-wrapper {
   display: flex;
   align-items: center;
-  gap: 0.875rem;
+  gap: 1rem;
   text-decoration: none;
 }
 
@@ -163,51 +170,53 @@ body {
   transform: scale(1.02);
 }
 
+/* Feedback Portal Badge */
 .header-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.375rem;
-  background-color: var(--color-primary-light);
-  color: var(--color-primary);
+  gap: 0.45rem;
+  background-color: var(--color-light-beige);
+  color: var(--color-deep-brown);
   font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  padding: 0.25rem 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 0.3rem 0.75rem;
   border-radius: var(--radius-full);
-  border: 1px solid var(--color-primary-subtle);
+  border: 1px solid var(--color-caramel);
+  box-shadow: 0 1px 3px rgba(128, 83, 47, 0.06);
 }
 
 .badge-pulse-dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background-color: var(--color-primary);
-  box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5);
-  animation: pulse 2s infinite;
+  background-color: var(--color-mimo-blue);
+  box-shadow: 0 0 0 0 rgba(22, 133, 213, 0.5);
+  animation: mimoPulse 2s infinite;
 }
 
-@keyframes pulse {
+@keyframes mimoPulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5);
+    box-shadow: 0 0 0 0 rgba(22, 133, 213, 0.5);
   }
   70% {
-    box-shadow: 0 0 0 6px rgba(37, 99, 235, 0);
+    box-shadow: 0 0 0 6px rgba(22, 133, 213, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+    box-shadow: 0 0 0 0 rgba(22, 133, 213, 0);
   }
 }
 
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
 .nav-link {
-  color: var(--color-text-muted);
+  color: var(--color-charcoal-muted);
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
   transition: color var(--transition-fast);
   padding: 0.5rem 0.25rem;
@@ -215,12 +224,12 @@ body {
 }
 
 .nav-link:hover {
-  color: var(--color-primary);
+  color: var(--color-deep-brown);
 }
 
 .nav-link.active {
-  color: var(--color-primary);
-  font-weight: 600;
+  color: var(--color-deep-brown);
+  font-weight: 700;
 }
 
 .nav-link.active::after {
@@ -229,8 +238,8 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background-color: var(--color-primary);
+  height: 2.5px;
+  background-color: var(--color-caramel);
   border-radius: var(--radius-full);
 }
 
@@ -238,64 +247,112 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--color-text-main);
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--color-deep-brown);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-warm);
   padding: 0.375rem 0.875rem;
   border-radius: var(--radius-full);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-warm-sm);
 }
 
 /* --------------------------------------------------------------------------
-   4. Hero Section
+   4. Hero Section with Botanical White Lilies
    -------------------------------------------------------------------------- */
 .hero-section {
+  position: relative;
   padding-top: 3.5rem;
   padding-bottom: 2rem;
   text-align: center;
+  overflow: hidden; /* Ensures botanical SVGs don't cause horizontal overflow */
 }
 
+/* Botanical Illustrations on Left & Right Flanks */
+.hero-botanical {
+  position: absolute;
+  top: 10px;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity var(--transition-normal);
+}
+
+.hero-botanical-left {
+  left: calc(50% - 590px);
+  transform: rotate(-3deg);
+  opacity: 0.88;
+}
+
+.hero-botanical-right {
+  right: calc(50% - 590px);
+  transform: rotate(3deg);
+  opacity: 0.88;
+}
+
+.botanical-img {
+  width: 280px;
+  height: auto;
+  display: block;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Kiosk Slogan Pill */
 .hero-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  padding: 0.375rem 0.875rem;
+  gap: 0.625rem;
+  background-color: var(--color-white);
+  border: 1.5px solid var(--color-caramel);
+  padding: 0.375rem 1rem;
   border-radius: var(--radius-full);
   font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--color-primary);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-deep-brown);
   margin-bottom: 1.25rem;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 2px 8px rgba(128, 83, 47, 0.08);
 }
 
-.hero-pill-icon {
-  width: 14px;
-  height: 14px;
-  color: var(--color-primary);
-}
-
-.hero-title {
-  font-size: clamp(2rem, 4vw + 1rem, 3.25rem);
+.kiosk-motto {
+  color: var(--color-caramel);
   font-weight: 800;
-  color: var(--color-text-main);
+}
+
+.hero-pill-sep {
+  color: var(--color-mimo-blue);
+  font-weight: 800;
+}
+
+.kiosk-submotto {
+  color: var(--color-charcoal);
+  font-weight: 700;
+}
+
+/* Main Heading */
+.hero-title {
+  font-size: clamp(2.25rem, 4.5vw + 1rem, 3.5rem);
+  font-weight: 800;
+  color: var(--color-charcoal);
   line-height: 1.15;
   letter-spacing: -0.03em;
   margin-bottom: 1rem;
 }
 
 .hero-title-highlight {
-  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  background: linear-gradient(135deg, #1685D5 0%, #116CB0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  position: relative;
 }
 
 .hero-subtitle {
   font-size: clamp(1rem, 1.2vw + 0.5rem, 1.1875rem);
-  color: var(--color-text-muted);
+  color: var(--color-charcoal-muted);
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -307,32 +364,39 @@ body {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+  gap: 1.25rem;
+  margin-top: 1.75rem;
 }
 
 .hero-feature-item {
   display: inline-flex;
   align-items: center;
-  gap: 0.375rem;
+  gap: 0.45rem;
   font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--color-text-muted);
+  font-weight: 600;
+  color: var(--color-charcoal-muted);
+  background-color: var(--color-white);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-warm);
+  box-shadow: var(--shadow-warm-sm);
 }
 
 .hero-feature-icon {
   width: 16px;
   height: 16px;
-  color: var(--color-primary);
+  color: var(--color-caramel);
 }
 
 /* --------------------------------------------------------------------------
-   5. Feedback Section & Form Card
+   5. Feedback Section & Form Card (Warm Ivory & Caramel Borders)
    -------------------------------------------------------------------------- */
 .feedback-section {
   padding-top: 1rem;
   padding-bottom: 5rem;
   flex: 1;
+  position: relative;
+  z-index: 3;
 }
 
 .feedback-wrapper {
@@ -341,29 +405,30 @@ body {
 }
 
 .feedback-card {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background-color: var(--color-surface-card);
+  border: 1.5px solid var(--color-border-warm);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-card);
   padding: 2.5rem;
   position: relative;
-  transition: box-shadow var(--transition-normal);
+  transition: box-shadow var(--transition-normal), border-color var(--transition-normal);
 }
 
 .feedback-card:hover {
-  box-shadow: var(--shadow-lg), 0 20px 48px -12px rgba(37, 99, 235, 0.09);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--color-caramel);
 }
 
 .card-header {
   margin-bottom: 2rem;
   padding-bottom: 1.25rem;
-  border-bottom: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-warm);
 }
 
 .card-header-title {
   font-size: 1.375rem;
-  font-weight: 700;
-  color: var(--color-text-main);
+  font-weight: 800;
+  color: var(--color-charcoal);
   letter-spacing: -0.02em;
   display: flex;
   align-items: center;
@@ -374,17 +439,19 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: var(--radius-sm);
-  background-color: var(--color-primary-light);
-  color: var(--color-primary);
+  background-color: var(--color-cream);
+  color: var(--color-caramel);
+  border: 1px solid var(--color-border-warm);
 }
 
 .card-header-desc {
   font-size: 0.875rem;
-  color: var(--color-text-muted);
-  margin-top: 0.25rem;
+  color: var(--color-charcoal-muted);
+  margin-top: 0.35rem;
+  line-height: 1.5;
 }
 
 /* Form Layout */
@@ -403,8 +470,8 @@ body {
 
 .form-label {
   font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--color-text-main);
+  font-weight: 700;
+  color: var(--color-charcoal);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -418,8 +485,8 @@ body {
 
 .field-hint {
   font-size: 0.75rem;
-  font-weight: 400;
-  color: var(--color-text-subtle);
+  font-weight: 500;
+  color: var(--color-charcoal-subtle);
 }
 
 /* Form Controls (Inputs & Textarea) */
@@ -434,7 +501,7 @@ body {
   left: 1rem;
   width: 18px;
   height: 18px;
-  color: var(--color-text-subtle);
+  color: var(--color-charcoal-subtle);
   pointer-events: none;
   transition: color var(--transition-fast);
 }
@@ -444,9 +511,9 @@ body {
   width: 100%;
   font-family: inherit;
   font-size: 0.9375rem;
-  color: var(--color-text-main);
-  background-color: var(--color-surface);
-  border: 1.5px solid var(--color-border);
+  color: var(--color-charcoal);
+  background-color: var(--color-cream-light);
+  border: 1.5px solid var(--color-border-warm);
   border-radius: var(--radius-md);
   padding: 0.8125rem 1rem 0.8125rem 2.75rem;
   outline: none;
@@ -463,20 +530,20 @@ body {
 
 .form-input::placeholder,
 .form-textarea::placeholder {
-  color: var(--color-text-subtle);
+  color: var(--color-charcoal-subtle);
   font-size: 0.875rem;
 }
 
-/* Focus States */
+/* Focus States (MIMO Blue) */
 .form-input:focus,
 .form-textarea:focus {
-  border-color: var(--color-border-focus);
-  box-shadow: var(--shadow-glow);
-  background-color: #FFFFFF;
+  border-color: var(--color-mimo-blue);
+  box-shadow: var(--shadow-blue-glow);
+  background-color: var(--color-white);
 }
 
 .form-group:focus-within .input-icon {
-  color: var(--color-primary);
+  color: var(--color-mimo-blue);
 }
 
 /* Error States */
@@ -484,12 +551,12 @@ body {
 .form-group.has-error .form-textarea,
 .form-group.has-error .rating-container {
   border-color: var(--color-error);
-  background-color: #FFFAFA;
+  background-color: var(--color-error-bg);
 }
 
 .form-group.has-error .form-input:focus,
 .form-group.has-error .form-textarea:focus {
-  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.12);
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.15);
 }
 
 .form-group.has-error .input-icon {
@@ -499,7 +566,7 @@ body {
 /* Success State for Inputs */
 .form-group.is-valid .form-input,
 .form-group.is-valid .form-textarea {
-  border-color: var(--color-success);
+  border-color: var(--color-caramel);
 }
 
 /* Error Message Display */
@@ -508,7 +575,7 @@ body {
   align-items: center;
   gap: 0.375rem;
   font-size: 0.8125rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-error);
   margin-top: 0.125rem;
   animation: fadeInDown 200ms ease;
@@ -536,7 +603,7 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   6. Five-Star Interactive Rating Component
+   6. Five-Star Interactive Rating Component (Warm Gold & Caramel)
    -------------------------------------------------------------------------- */
 .rating-group {
   position: relative;
@@ -546,9 +613,9 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  padding: 1rem 1.25rem;
-  background-color: #FAF8F5;
-  border: 1.5px solid var(--color-border);
+  padding: 1.125rem 1.25rem;
+  background-color: var(--color-cream-light);
+  border: 1.5px solid var(--color-border-warm);
   border-radius: var(--radius-md);
   transition: all var(--transition-fast);
 }
@@ -577,7 +644,7 @@ body {
 }
 
 .star-btn:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-mimo-blue);
   outline-offset: 2px;
 }
 
@@ -588,24 +655,24 @@ body {
 .star-icon {
   width: 32px;
   height: 32px;
-  fill: #D1D5DB; /* Unselected state */
-  stroke: #9CA3AF;
+  fill: var(--color-star-unselected);
+  stroke: var(--color-star-stroke);
   stroke-width: 1.25;
   stroke-linejoin: round;
   transition: fill var(--transition-fast), stroke var(--transition-fast), filter var(--transition-fast);
 }
 
-/* Hover & Active Stars */
+/* Hover & Active Stars (Warm Golden Caramel Accent) */
 .star-btn.is-hovered .star-icon,
 .star-btn.is-active .star-icon {
-  fill: var(--color-accent-gold);
-  stroke: #D97706;
-  filter: drop-shadow(0 2px 4px rgba(245, 158, 11, 0.25));
+  fill: var(--color-star-gold);
+  stroke: var(--color-deep-brown);
+  filter: drop-shadow(0 2px 6px rgba(180, 123, 69, 0.35));
 }
 
 .star-btn.is-preview .star-icon {
-  fill: var(--color-accent-gold-hover);
-  stroke: #F59E0B;
+  fill: var(--color-star-gold-hover);
+  stroke: var(--color-caramel);
 }
 
 /* Dynamic Star Description Badge */
@@ -619,27 +686,30 @@ body {
 .rating-description {
   font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--color-text-muted);
+  color: var(--color-charcoal-muted);
   transition: color var(--transition-fast);
 }
 
 .rating-description.has-rating {
-  color: var(--color-primary);
+  color: var(--color-deep-brown);
+  font-weight: 700;
 }
 
 .rating-badge {
   font-size: 0.75rem;
   font-weight: 700;
-  padding: 0.125rem 0.5rem;
+  padding: 0.15rem 0.6rem;
   border-radius: var(--radius-full);
-  background-color: var(--color-border-light);
-  color: var(--color-text-muted);
+  background-color: var(--color-light-beige);
+  color: var(--color-deep-brown);
+  border: 1px solid var(--color-border-warm);
   transition: all var(--transition-fast);
 }
 
 .rating-badge.active {
-  background-color: var(--color-accent-gold-subtle);
-  color: #B45309;
+  background-color: var(--color-caramel);
+  color: var(--color-white);
+  border-color: var(--color-deep-brown);
 }
 
 /* --------------------------------------------------------------------------
@@ -655,7 +725,7 @@ body {
 .char-counter-wrapper {
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--color-text-subtle);
+  color: var(--color-charcoal-subtle);
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -663,8 +733,8 @@ body {
 }
 
 .char-counter {
-  font-weight: 600;
-  color: var(--color-text-muted);
+  font-weight: 700;
+  color: var(--color-charcoal-muted);
   transition: color var(--transition-fast);
 }
 
@@ -673,7 +743,7 @@ body {
 }
 
 .char-counter.near-max {
-  color: var(--color-accent-gold);
+  color: var(--color-star-gold);
 }
 
 .char-counter.at-max {
@@ -681,7 +751,7 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   8. Submit Button & State Styles
+   8. Submit Button (MIMO Blue) & Interactive States
    -------------------------------------------------------------------------- */
 .form-actions {
   margin-top: 0.75rem;
@@ -698,31 +768,31 @@ body {
   font-size: 1rem;
   font-weight: 700;
   color: #FFFFFF;
-  background-color: var(--color-primary);
+  background-color: var(--color-mimo-blue);
   border: none;
   border-radius: var(--radius-md);
   padding: 0.9375rem 1.75rem;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+  box-shadow: 0 4px 14px rgba(22, 133, 213, 0.35);
   transition: all var(--transition-fast);
   overflow: hidden;
 }
 
 .btn-primary:hover:not(:disabled) {
-  background-color: var(--color-primary-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.42);
+  background-color: var(--color-mimo-blue-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(22, 133, 213, 0.42);
 }
 
 .btn-primary:active:not(:disabled) {
-  background-color: var(--color-primary-active);
+  background-color: var(--color-mimo-blue-active);
   transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 2px 8px rgba(22, 133, 213, 0.3);
 }
 
 .btn-primary:focus-visible {
   outline: none;
-  box-shadow: var(--shadow-glow);
+  box-shadow: var(--shadow-blue-glow);
 }
 
 .btn-primary:disabled {
@@ -811,7 +881,7 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 1.5rem;
-  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+  box-shadow: 0 8px 24px rgba(21, 128, 61, 0.15);
   animation: badgePop 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -835,23 +905,23 @@ body {
 .success-title {
   font-size: 1.625rem;
   font-weight: 800;
-  color: var(--color-text-main);
+  color: var(--color-charcoal);
   letter-spacing: -0.02em;
   margin-bottom: 0.75rem;
 }
 
 .success-desc {
   font-size: 1rem;
-  color: var(--color-text-muted);
-  max-width: 440px;
+  color: var(--color-charcoal-muted);
+  max-width: 460px;
   margin: 0 auto 2rem auto;
   line-height: 1.6;
 }
 
 /* Submitted Feedback Summary Card inside Success */
 .success-summary {
-  background-color: #FAF8F5;
-  border: 1px solid var(--color-border);
+  background-color: var(--color-cream-light);
+  border: 1.5px solid var(--color-border-warm);
   border-radius: var(--radius-md);
   padding: 1.25rem;
   margin: 0 auto 2rem auto;
@@ -864,7 +934,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 0;
-  border-bottom: 1px dashed var(--color-border-light);
+  border-bottom: 1px dashed var(--color-border-warm);
   font-size: 0.875rem;
 }
 
@@ -874,17 +944,17 @@ body {
 }
 
 .summary-label {
-  color: var(--color-text-subtle);
-  font-weight: 500;
-}
-
-.summary-value {
-  color: var(--color-text-main);
+  color: var(--color-charcoal-subtle);
   font-weight: 600;
 }
 
+.summary-value {
+  color: var(--color-charcoal);
+  font-weight: 700;
+}
+
 .summary-stars {
-  color: var(--color-accent-gold);
+  color: var(--color-star-gold);
   display: inline-flex;
   align-items: center;
   gap: 2px;
@@ -897,10 +967,10 @@ body {
   gap: 0.5rem;
   font-family: inherit;
   font-size: 0.9375rem;
-  font-weight: 600;
-  color: var(--color-text-main);
-  background-color: var(--color-surface);
-  border: 1.5px solid var(--color-border);
+  font-weight: 700;
+  color: var(--color-deep-brown);
+  background-color: var(--color-cream);
+  border: 1.5px solid var(--color-caramel);
   border-radius: var(--radius-md);
   padding: 0.75rem 1.5rem;
   cursor: pointer;
@@ -908,17 +978,17 @@ body {
 }
 
 .btn-secondary:hover {
-  background-color: var(--color-bg-base);
-  border-color: var(--color-text-subtle);
+  background-color: var(--color-light-beige);
+  border-color: var(--color-deep-brown);
   transform: translateY(-1px);
 }
 
 /* --------------------------------------------------------------------------
-   10. Footer Section
+   10. Footer Section (Warm Caramel & Beige Kiosk Notes)
    -------------------------------------------------------------------------- */
 .site-footer {
-  background-color: var(--color-surface);
-  border-top: 1px solid var(--color-border);
+  background-color: var(--color-light-beige);
+  border-top: 1.5px solid var(--color-border-warm);
   padding-top: 3rem;
   padding-bottom: 2.5rem;
   margin-top: auto;
@@ -931,7 +1001,7 @@ body {
   flex-wrap: wrap;
   gap: 1.5rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-warm);
 }
 
 .footer-brand {
@@ -942,9 +1012,9 @@ body {
 
 .footer-appreciation {
   font-size: 0.875rem;
-  color: var(--color-text-muted);
-  max-width: 420px;
-  line-height: 1.5;
+  color: var(--color-charcoal-muted);
+  max-width: 440px;
+  line-height: 1.6;
 }
 
 .footer-links {
@@ -956,14 +1026,14 @@ body {
 
 .footer-link {
   font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--color-text-muted);
+  font-weight: 600;
+  color: var(--color-charcoal-muted);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
 
 .footer-link:hover {
-  color: var(--color-primary);
+  color: var(--color-deep-brown);
 }
 
 .footer-bottom {
@@ -974,7 +1044,7 @@ body {
   gap: 1rem;
   padding-top: 1.5rem;
   font-size: 0.8125rem;
-  color: var(--color-text-subtle);
+  color: var(--color-charcoal-subtle);
 }
 
 .footer-status-pill {
@@ -982,9 +1052,10 @@ body {
   align-items: center;
   gap: 0.375rem;
   font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--color-success);
-  background-color: var(--color-success-bg);
+  font-weight: 700;
+  color: var(--color-deep-brown);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-warm);
   padding: 0.25rem 0.625rem;
   border-radius: var(--radius-full);
 }
@@ -993,16 +1064,60 @@ body {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: var(--color-success);
+  background-color: var(--color-mimo-blue);
 }
 
 /* --------------------------------------------------------------------------
    11. Responsive Design & Media Queries
    -------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+  .hero-botanical-left {
+    left: -50px;
+    opacity: 0.65;
+  }
+  .hero-botanical-right {
+    right: -50px;
+    opacity: 0.65;
+  }
+  .botanical-img {
+    width: 230px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-botanical-left {
+    left: -70px;
+    opacity: 0.45;
+  }
+  .hero-botanical-right {
+    right: -70px;
+    opacity: 0.45;
+  }
+  .botanical-img {
+    width: 190px;
+  }
+}
+
 @media (max-width: 768px) {
   .hero-section {
     padding-top: 2.5rem;
     padding-bottom: 1.5rem;
+  }
+
+  .hero-botanical-left {
+    left: -40px;
+    top: -20px;
+    opacity: 0.22;
+  }
+  
+  .hero-botanical-right {
+    right: -40px;
+    top: -20px;
+    opacity: 0.22;
+  }
+  
+  .botanical-img {
+    width: 160px;
   }
   
   .feedback-card {
@@ -1015,7 +1130,7 @@ body {
   }
   
   .site-nav {
-    display: none; /* Keep header clean on mobile */
+    display: none; /* Keep mobile header clean and fast */
   }
   
   .footer-top {
@@ -1051,6 +1166,10 @@ body {
   
   .hero-badges {
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.625rem;
+  }
+  
+  .hero-pill {
+    font-size: 0.75rem;
   }
 }
