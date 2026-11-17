@@ -42,7 +42,7 @@ The design is directly inspired by the physical **MIMO Kiosk**:
 - **Bright MIMO Blue Digital Display (`#1685D5`):** Primary action buttons, interactive focus rings, link highlights, and status pulses.
 - **Charcoal (`#242321`):** High-contrast, legible typography across all device sizes.
 - **Pure White (`#FFFFFF`):** Reserved for card surfaces to provide clarity and contrast.
-- **Brand Slogans:** Prominently incorporates `"MAKE IT REAL"` and `"PRINT. MADE EASY."` in the hero badge and navigation.
+- **Brand Slogans:** Prominently incorporates `"MAKE IT REAL"` and `"PRINT MADE EASY"` in the hero badge and navigation.
 
 ---
 
@@ -74,10 +74,10 @@ In reference to the white lily flower arrangements and dark botanical foliage on
 1. **Header & Navigation:**
    - MIMO brand logo with updated kiosk color accents.
    - Live status indicator badge (`Feedback Portal` with pulsing MIMO blue dot).
-   - Minimalist navigation with `"PRINT. MADE EASY."` tag.
+   - Minimalist navigation with `"PRINT MADE EASY"` tag.
 
 2. **Hero Section:**
-   - Kiosk slogan pill: `"MAKE IT REAL • PRINT. MADE EASY."`.
+   - Kiosk slogan pill: `"MAKE IT REAL • PRINT MADE EASY"`.
    - Exact heading: *"Your Experience Matters."* (with MIMO blue emphasis).
    - Exact supporting copy: *"Help us make MIMO better. Share your experience and let us know what you think."*
    - Feature pills showcasing rapid completion and direct delivery to the product team.
@@ -130,6 +130,12 @@ MIMO-Feedback-Website/
 │       ├── favicon.svg              # Vector browser tab icon
 │       ├── botanical-lily-left.svg  # Custom white lily & dark botanical SVG
 │       └── botanical-lily-right.svg # Complementing botanical SVG
+├── admin/
+│   ├── index.html            # Dedicated Administrator Dashboard & Login Portal
+│   ├── css/
+│   │   └── admin.css         # Admin styling matching MIMO kiosk design system
+│   └── js/
+│       └── admin.js          # Admin logic, Firebase Auth observer, Firestore query, metrics
 ├── firebase.js           # Firebase modular SDK integration & Firestore submission module
 ├── README.md             # Complete documentation and branding guide
 └── .gitignore            # Git exclusion rules for secrets, OS files, and caches

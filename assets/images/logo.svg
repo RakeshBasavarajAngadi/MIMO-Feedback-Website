@@ -1,28 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 44" fill="none">
   <defs>
-    <linearGradient id="logoIconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1685D5" />
-      <stop offset="100%" stop-color="#116CB0" />
+    <linearGradient id="logoCaramelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C47A43" />
+      <stop offset="100%" stop-color="#A65F32" />
     </linearGradient>
-    <linearGradient id="caramelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#B47B45" />
-      <stop offset="100%" stop-color="#80532F" />
+    <linearGradient id="logoBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2876B7" />
+      <stop offset="100%" stop-color="#1E5C91" />
     </linearGradient>
   </defs>
-  <!-- Icon Mark (MIMO Blue with Warm Caramel Accent) -->
+  <!-- Icon Mark (Kiosk Caramel Orange with White Geometry) -->
   <g transform="translate(0, 2)">
-    <rect width="40" height="40" rx="12" fill="url(#logoIconGrad)" />
+    <rect width="40" height="40" rx="12" fill="url(#logoCaramelGrad)" />
     <path d="M10 28V16C10 14.1 11.5 12.5 13.4 12.5C14.6 12.5 15.7 13.1 16.3 14.1L20 19.8L23.7 14.1C24.3 13.1 25.4 12.5 26.6 12.5C28.5 12.5 30 14.1 30 16V28" 
           stroke="#FFFFFF" 
           stroke-width="3.5" 
           stroke-linecap="round" 
           stroke-linejoin="round" />
-    <circle cx="20" cy="26" r="2.2" fill="#E8D6C0" />
+    <circle cx="20" cy="26" r="2.2" fill="#F7F5F3" />
   </g>
-  <!-- Brand Wordmark in Kiosk Charcoal -->
-  <text x="52" y="29" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5px" fill="#242321">
+  <!-- Brand Wordmark in Deep Black -->
+  <text x="52" y="29" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5px" fill="#191919">
     mimo
   </text>
-  <!-- Caramel dot accent -->
-  <circle cx="121" cy="26" r="3.5" fill="url(#caramelGrad)" />
+  <!-- MIMO Blue dot accent -->
+  <circle cx="121" cy="26" r="3.5" fill="url(#logoBlueGrad)" />
 </svg>

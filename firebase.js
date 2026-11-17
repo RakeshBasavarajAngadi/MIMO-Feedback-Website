@@ -21,6 +21,7 @@ import {
   addDoc, 
   serverTimestamp 
 } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { getAuth } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
 
 // =============================================================================
 // Firebase Web App Configuration
@@ -28,12 +29,12 @@ import {
 // Paste the exact configuration from the Firebase Console:
 // (Firebase Console -> Project Settings -> General -> Your apps -> Web App)
 export const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyAKtJZBhTtitLE2_q9z_tzfufyQDIMVpRo",
+  authDomain: "mimo-feedback-website.firebaseapp.com",
+  projectId: "mimo-feedback-website",
+  storageBucket: "mimo-feedback-website.firebasestorage.app",
+  messagingSenderId: "928745668273",
+  appId: "1:928745668273:web:df3b91735a56648ea56c90"
 };
 
 /**
@@ -46,15 +47,17 @@ export const isFirebaseConfigured = Boolean(
   firebaseConfig.projectId !== "YOUR_PROJECT_ID"
 );
 
-// Initialize Firebase App & Firestore Database Instance
+// Initialize Firebase App, Auth & Firestore Database Instance
 let app;
 let db = null;
+let auth = null;
 
 try {
   if (isFirebaseConfigured) {
     app = initializeApp(firebaseConfig);
     db = getFirestore(app);
-    console.info('[Firebase] Modular SDK initialized for project:', firebaseConfig.projectId);
+    auth = getAuth(app);
+    console.info('[Firebase] Modular SDK & Auth initialized for project:', firebaseConfig.projectId);
   } else {
     console.warn('[Firebase] Configuration placeholders detected in firebase.js. Awaiting Firebase Console configuration.');
   }
@@ -62,8 +65,8 @@ try {
   console.error('[Firebase] Initialization error:', initError);
 }
 
-// Export the Firestore instance
-export { db };
+// Export the Firestore & Auth instances
+export { db, auth };
 
 // =============================================================================
 // Reusable Feedback Submission Handler for Cloud Firestore

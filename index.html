@@ -8,7 +8,7 @@
   
   <!-- SEO & Social Meta Tags -->
   <meta name="description" content="Share your experience and thoughts with the MIMO team. Help us improve the kiosk and digital experience for users worldwide.">
-  <meta name="theme-color" content="#B47B45">
+  <meta name="theme-color" content="#C47A43">
   <meta property="og:title" content="MIMO Feedback | Share Your Experience">
   <meta property="og:description" content="Help us make MIMO better. Share your experience and let us know what you think.">
   <meta property="og:type" content="website">
@@ -21,8 +21,45 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Cache Invalidation -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <!-- Stylesheet with Cache-Busting Query -->
+  <link rel="stylesheet" href="css/style.css?v=20261117-caramel">
+
+  <!-- Critical Brand Color Enforcement (Ensures Immediate Visual Consistency) -->
+  <style id="mimo-brand-critical">
+    :root {
+      --color-bg-base: #F7F5F3 !important;
+      --color-surface-card: #FFFFFF !important;
+      --color-charcoal: #191919 !important;
+      --color-caramel: #C47A43 !important;
+      --color-dark-caramel: #A65F32 !important;
+      --color-mimo-blue: #2876B7 !important;
+      --color-border-warm: #EADBCC !important;
+      --color-star-gold: #C47A43 !important;
+    }
+    html, body {
+      background-color: #F7F5F3 !important;
+      background: #F7F5F3 !important;
+    }
+    .hero-title {
+      color: #191919 !important;
+    }
+    .hero-title-highlight {
+      color: #C47A43 !important;
+      background: linear-gradient(135deg, #C47A43 0%, #A65F32 100%) !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+    .btn-primary {
+      background-color: #191919 !important;
+      color: #FFFFFF !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,7 +80,7 @@
         <a href="#feedback-form-section" class="nav-link active">Share Feedback</a>
         <a href="#why-feedback" class="nav-link">Why Feedback Matters</a>
         <span class="nav-tag">
-          <span class="kiosk-tag-text">PRINT. MADE EASY.</span>
+          <span class="kiosk-tag-text">PRINT MADE EASY</span>
         </span>
       </nav>
     </div>
@@ -66,7 +103,7 @@
       <div class="hero-pill">
         <span class="kiosk-motto">MAKE IT REAL</span>
         <span class="hero-pill-sep">•</span>
-        <span class="kiosk-submotto">PRINT. MADE EASY.</span>
+        <span class="kiosk-submotto">PRINT MADE EASY</span>
       </div>
 
       <h1 class="hero-title">
@@ -421,7 +458,7 @@
         <div class="footer-brand">
           <img src="assets/images/logo.svg" alt="MIMO" class="footer-logo-img" width="118" height="32">
           <p class="footer-appreciation">
-            MAKE IT REAL. PRINT. MADE EASY. Every voice and review empowers us to create a seamless kiosk experience for creators and users everywhere.
+            MAKE IT REAL. PRINT MADE EASY — Every voice and review empowers us to create a seamless kiosk experience for creators and users everywhere.
           </p>
         </div>
 

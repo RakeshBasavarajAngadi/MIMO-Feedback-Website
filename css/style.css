@@ -1,10 +1,15 @@
 /* ==========================================================================
    MIMO Feedback Collection Website - Design System & Stylesheet
-   Theme: Physical MIMO Kiosk Brand Identity
-   Palette: Warm Caramel (#B47B45), Deep Brown (#80532F), Warm Cream (#F2E9DC),
-            Light Beige (#E8D6C0), MIMO Blue (#1685D5), Charcoal (#242321), White (#FFFFFF)
-   Brand Slogans: "MAKE IT REAL" • "PRINT. MADE EASY."
-   Floral Branding: White Lilies & Dark Botanical Illustrations
+   Theme: Official Physical MIMO Printing / Xerox Kiosk Brand Identity
+   New Brand Colour Palette:
+     - Kiosk Caramel Orange: #C47A43
+     - Dark Caramel:         #A65F32
+     - Warm White Base:      #F7F5F3
+     - Deep Black:           #191919
+     - MIMO Blue Accent:     #2876B7
+     - Pure White:           #FFFFFF
+   Brand Slogans: "MAKE IT REAL" • "PRINT MADE EASY"
+   Floral Branding: Botanical White Lilies with Dark Charcoal Leaves
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -12,35 +17,31 @@
    -------------------------------------------------------------------------- */
 :root {
   /* Physical Kiosk Brand Colors */
-  --color-caramel: #B47B45;            /* Warm Caramel / Tan Brown Kiosk Body */
-  --color-caramel-hover: #A06B38;      /* Slightly deeper caramel hover */
-  --color-deep-brown: #80532F;         /* Deep Rich Wood / Leather Brown */
-  --color-deep-brown-dark: #623D20;    /* Darkest brand brown */
-  --color-cream: #F2E9DC;              /* Warm Cream Base */
-  --color-cream-light: #FAF6F0;        /* Light Cream Surface */
-  --color-light-beige: #E8D6C0;        /* Light Beige Accent */
-  --color-mimo-blue: #1685D5;          /* Bright Blue Digital Display */
-  --color-mimo-blue-hover: #126EAF;    /* Digital Blue Hover State */
-  --color-mimo-blue-active: #0E578B;   /* Digital Blue Active State */
-  --color-mimo-blue-light: #EBF5FC;   /* Very soft blue tint */
-  --color-charcoal: #242321;           /* Charcoal Typography */
-  --color-charcoal-muted: #54504A;     /* Secondary Body Typography */
-  --color-charcoal-subtle: #8A8277;    /* Subtle / Placeholder Text */
-  --color-white: #FFFFFF;              /* Crisp White Surface */
+  --color-caramel: #C47A43;            /* Kiosk Caramel Orange */
+  --color-caramel-hover: #B36B36;      /* Slightly deeper caramel hover */
+  --color-dark-caramel: #A65F32;       /* Dark Caramel Accent */
+  --color-bg-base: #F7F5F3;            /* Warm White Base Background */
+  --color-bg-secondary: #EFECE8;       /* Warm White Secondary */
+  --color-surface-card: #FFFFFF;       /* Pure White Card Surface for Contrast */
+  --color-charcoal: #191919;           /* Deep Black Primary Text & Headings */
+  --color-charcoal-muted: #424242;     /* Charcoal Secondary Typography */
+  --color-charcoal-subtle: #757575;    /* Subtle / Placeholder Text */
+  --color-mimo-blue: #2876B7;          /* MIMO Blue Accent (used sparingly) */
+  --color-mimo-blue-hover: #1E5C91;    /* Digital Blue Hover State */
+  --color-mimo-blue-active: #15456F;   /* Digital Blue Active State */
+  --color-mimo-blue-light: #EEF5FA;    /* Soft blue tint */
+  --color-white: #FFFFFF;              /* Crisp Pure White Surface */
 
   /* Neutral Surfaces & Warm Borders */
-  --color-bg-base: #F2E9DC;            /* Dominated by Warm Cream */
-  --color-bg-secondary: #E8D6C0;       /* Light Beige */
-  --color-surface-card: #FFFFFF;       /* Pure White Card Surface for Contrast */
-  --color-border-warm: #DFCEBB;        /* Warm Caramel / Sand Border */
-  --color-border-strong: #CBB49C;      /* Stronger Sand Border */
-  --color-border-focus: #1685D5;       /* MIMO Blue Input Focus */
+  --color-border-warm: #EADBCC;        /* Warm Caramel / Sand Border */
+  --color-border-strong: #D5BFAA;      /* Stronger Sand Border */
+  --color-border-focus: #C47A43;       /* Caramel Orange Input Focus Border */
 
   /* Star Rating & Semantics */
-  --color-star-gold: #E0983A;          /* Warm Golden Caramel Star */
-  --color-star-gold-hover: #F2A847;    /* Bright Gold Star Preview */
-  --color-star-unselected: #D6C8B7;    /* Warm Grayed Sand Unselected Star */
-  --color-star-stroke: #A49381;
+  --color-star-gold: #C47A43;          /* Caramel Orange Star */
+  --color-star-gold-hover: #D78A52;    /* Warm Gold Star Preview */
+  --color-star-unselected: #DCD7D0;    /* Warm Grayed Sand Unselected Star */
+  --color-star-stroke: #B8B0A5;        /* Star Stroke */
   --color-success: #15803D;
   --color-success-bg: #F0FDF4;
   --color-success-border: #BBF7D0;
@@ -48,13 +49,14 @@
   --color-error-bg: #FEF2F2;
   --color-error-border: #FECACA;
 
-  /* Elevation Shadows with Warm Brown Undertones */
-  --shadow-warm-sm: 0 1px 3px rgba(36, 35, 33, 0.04), 0 1px 2px rgba(128, 83, 47, 0.04);
-  --shadow-warm-md: 0 4px 14px -2px rgba(128, 83, 47, 0.08), 0 2px 6px -1px rgba(36, 35, 33, 0.04);
-  --shadow-card: 0 20px 48px -10px rgba(128, 83, 47, 0.12), 0 4px 16px rgba(36, 35, 33, 0.04);
-  --shadow-card-hover: 0 24px 56px -12px rgba(128, 83, 47, 0.16), 0 6px 20px rgba(36, 35, 33, 0.06);
-  --shadow-blue-glow: 0 0 0 4px rgba(22, 133, 213, 0.18);
-  --shadow-caramel-glow: 0 0 0 4px rgba(180, 123, 69, 0.18);
+  /* Elevation Shadows with Warm Caramel Undertones */
+  --shadow-warm-sm: 0 1px 3px rgba(25, 25, 25, 0.04), 0 1px 2px rgba(196, 122, 67, 0.04);
+  --shadow-warm-md: 0 4px 14px -2px rgba(196, 122, 67, 0.08), 0 2px 6px -1px rgba(25, 25, 25, 0.03);
+  --shadow-card: 0 16px 40px -10px rgba(196, 122, 67, 0.08), 0 4px 16px rgba(25, 25, 25, 0.03);
+  --shadow-card-hover: 0 22px 48px -10px rgba(196, 122, 67, 0.12), 0 6px 20px rgba(25, 25, 25, 0.05);
+  --shadow-blue-glow: 0 0 0 4px rgba(40, 118, 183, 0.18);
+  --shadow-caramel-glow: 0 0 0 4px rgba(196, 122, 67, 0.18);
+  --shadow-black-glow: 0 0 0 4px rgba(25, 25, 25, 0.18);
 
   /* Border Radii */
   --radius-sm: 8px;
@@ -100,12 +102,8 @@ body {
   flex-direction: column;
   position: relative;
   overflow-x: hidden;
-  /* Warm Cream base with subtle caramel & beige radial auras */
-  background: 
-    radial-gradient(circle at 12% 16%, rgba(180, 123, 69, 0.08) 0%, transparent 45%),
-    radial-gradient(circle at 88% 78%, rgba(22, 133, 213, 0.05) 0%, transparent 45%),
-    radial-gradient(circle at 50% 50%, rgba(232, 214, 192, 0.4) 0%, transparent 70%),
-    var(--color-bg-base);
+  background-color: var(--color-bg-base); /* Warm White #F7F5F3 */
+  background: var(--color-bg-base);
 }
 
 /* Accessible hidden element utility */
@@ -132,13 +130,13 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   3. Header Navigation Section (Warm Cream & Subtle Caramel Details)
+   3. Header Navigation Section (Warm White, Caramel & Deep Black)
    -------------------------------------------------------------------------- */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background-color: rgba(242, 233, 220, 0.92);
+  background-color: rgba(247, 245, 243, 0.94);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1.5px solid var(--color-border-warm);
@@ -175,15 +173,15 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  background-color: var(--color-light-beige);
-  color: var(--color-deep-brown);
+  background-color: var(--color-white);
+  color: var(--color-charcoal);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.03em;
   padding: 0.3rem 0.75rem;
   border-radius: var(--radius-full);
-  border: 1px solid var(--color-caramel);
-  box-shadow: 0 1px 3px rgba(128, 83, 47, 0.06);
+  border: 1px solid var(--color-border-warm);
+  box-shadow: 0 1px 3px rgba(25, 25, 25, 0.04);
 }
 
 .badge-pulse-dot {
@@ -191,19 +189,19 @@ body {
   height: 7px;
   border-radius: 50%;
   background-color: var(--color-mimo-blue);
-  box-shadow: 0 0 0 0 rgba(22, 133, 213, 0.5);
+  box-shadow: 0 0 0 0 rgba(40, 118, 183, 0.5);
   animation: mimoPulse 2s infinite;
 }
 
 @keyframes mimoPulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(22, 133, 213, 0.5);
+    box-shadow: 0 0 0 0 rgba(40, 118, 183, 0.5);
   }
   70% {
-    box-shadow: 0 0 0 6px rgba(22, 133, 213, 0);
+    box-shadow: 0 0 0 6px rgba(40, 118, 183, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(22, 133, 213, 0);
+    box-shadow: 0 0 0 0 rgba(40, 118, 183, 0);
   }
 }
 
@@ -224,11 +222,11 @@ body {
 }
 
 .nav-link:hover {
-  color: var(--color-deep-brown);
+  color: var(--color-caramel);
 }
 
 .nav-link.active {
-  color: var(--color-deep-brown);
+  color: var(--color-charcoal);
   font-weight: 700;
 }
 
@@ -250,7 +248,7 @@ body {
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.06em;
-  color: var(--color-deep-brown);
+  color: var(--color-charcoal);
   background-color: var(--color-white);
   border: 1px solid var(--color-border-warm);
   padding: 0.375rem 0.875rem;
@@ -313,9 +311,9 @@ body {
   font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  color: var(--color-deep-brown);
+  color: var(--color-charcoal);
   margin-bottom: 1.25rem;
-  box-shadow: 0 2px 8px rgba(128, 83, 47, 0.08);
+  box-shadow: 0 2px 8px rgba(196, 122, 67, 0.08);
 }
 
 .kiosk-motto {
@@ -324,7 +322,7 @@ body {
 }
 
 .hero-pill-sep {
-  color: var(--color-mimo-blue);
+  color: var(--color-caramel);
   font-weight: 800;
 }
 
@@ -333,7 +331,7 @@ body {
   font-weight: 700;
 }
 
-/* Main Heading */
+/* Main Heading (Deep Black #191919 with Caramel Orange #C47A43 Highlight) */
 .hero-title {
   font-size: clamp(2.25rem, 4.5vw + 1rem, 3.5rem);
   font-weight: 800;
@@ -344,9 +342,12 @@ body {
 }
 
 .hero-title-highlight {
-  background: linear-gradient(135deg, #1685D5 0%, #116CB0 100%);
+  color: var(--color-caramel); /* Fallback solid caramel orange */
+  background: linear-gradient(135deg, #C47A43 0%, #A65F32 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  display: inline-block;
   position: relative;
 }
 
@@ -389,7 +390,7 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   5. Feedback Section & Form Card (Warm Ivory & Caramel Borders)
+   5. Feedback Section & Form Card (Pure White Surface & Caramel Borders)
    -------------------------------------------------------------------------- */
 .feedback-section {
   padding-top: 1rem;
@@ -442,7 +443,7 @@ body {
   width: 34px;
   height: 34px;
   border-radius: var(--radius-sm);
-  background-color: var(--color-cream);
+  background-color: #FAF8F5;
   color: var(--color-caramel);
   border: 1px solid var(--color-border-warm);
 }
@@ -512,13 +513,14 @@ body {
   font-family: inherit;
   font-size: 0.9375rem;
   color: var(--color-charcoal);
-  background-color: var(--color-cream-light);
+  background-color: #FAF8F5;
   border: 1.5px solid var(--color-border-warm);
   border-radius: var(--radius-md);
   padding: 0.8125rem 1rem 0.8125rem 2.75rem;
   outline: none;
   transition: all var(--transition-fast);
   -webkit-appearance: none;
+  appearance: none;
 }
 
 .form-textarea {
@@ -534,16 +536,16 @@ body {
   font-size: 0.875rem;
 }
 
-/* Focus States (MIMO Blue) */
+/* Focus States (Caramel Orange Border & Glow) */
 .form-input:focus,
 .form-textarea:focus {
-  border-color: var(--color-mimo-blue);
-  box-shadow: var(--shadow-blue-glow);
+  border-color: var(--color-caramel);
+  box-shadow: var(--shadow-caramel-glow);
   background-color: var(--color-white);
 }
 
 .form-group:focus-within .input-icon {
-  color: var(--color-mimo-blue);
+  color: var(--color-caramel);
 }
 
 /* Error States */
@@ -627,7 +629,7 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   6. Five-Star Interactive Rating Component (Warm Gold & Caramel)
+   6. Five-Star Interactive Rating Component (Kiosk Caramel Orange)
    -------------------------------------------------------------------------- */
 .rating-group {
   position: relative;
@@ -638,7 +640,7 @@ body {
   flex-direction: column;
   gap: 0.75rem;
   padding: 1.125rem 1.25rem;
-  background-color: var(--color-cream-light);
+  background-color: #FAF8F5;
   border: 1.5px solid var(--color-border-warm);
   border-radius: var(--radius-md);
   transition: all var(--transition-fast);
@@ -686,12 +688,12 @@ body {
   transition: fill var(--transition-fast), stroke var(--transition-fast), filter var(--transition-fast);
 }
 
-/* Hover & Active Stars (Warm Golden Caramel Accent) */
+/* Hover & Active Stars (Caramel Orange Accent) */
 .star-btn.is-hovered .star-icon,
 .star-btn.is-active .star-icon {
-  fill: var(--color-star-gold);
-  stroke: var(--color-deep-brown);
-  filter: drop-shadow(0 2px 6px rgba(180, 123, 69, 0.35));
+  fill: var(--color-caramel);
+  stroke: var(--color-dark-caramel);
+  filter: drop-shadow(0 2px 6px rgba(196, 122, 67, 0.35));
 }
 
 .star-btn.is-preview .star-icon {
@@ -715,7 +717,7 @@ body {
 }
 
 .rating-description.has-rating {
-  color: var(--color-deep-brown);
+  color: var(--color-charcoal);
   font-weight: 700;
 }
 
@@ -724,8 +726,8 @@ body {
   font-weight: 700;
   padding: 0.15rem 0.6rem;
   border-radius: var(--radius-full);
-  background-color: var(--color-light-beige);
-  color: var(--color-deep-brown);
+  background-color: var(--color-bg-secondary);
+  color: var(--color-charcoal);
   border: 1px solid var(--color-border-warm);
   transition: all var(--transition-fast);
 }
@@ -733,7 +735,7 @@ body {
 .rating-badge.active {
   background-color: var(--color-caramel);
   color: var(--color-white);
-  border-color: var(--color-deep-brown);
+  border-color: var(--color-dark-caramel);
 }
 
 /* --------------------------------------------------------------------------
@@ -767,7 +769,7 @@ body {
 }
 
 .char-counter.near-max {
-  color: var(--color-star-gold);
+  color: var(--color-caramel);
 }
 
 .char-counter.at-max {
@@ -775,7 +777,7 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   8. Submit Button (MIMO Blue) & Interactive States
+   8. Submit Button (Deep Black with White Text) & Interactive States
    -------------------------------------------------------------------------- */
 .form-actions {
   margin-top: 0.75rem;
@@ -792,35 +794,35 @@ body {
   font-size: 1rem;
   font-weight: 700;
   color: #FFFFFF;
-  background-color: var(--color-mimo-blue);
+  background-color: var(--color-charcoal); /* Deep Black #191919 */
   border: none;
   border-radius: var(--radius-md);
   padding: 0.9375rem 1.75rem;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(22, 133, 213, 0.35);
+  box-shadow: 0 4px 14px rgba(25, 25, 25, 0.25);
   transition: all var(--transition-fast);
   overflow: hidden;
 }
 
 .btn-primary:hover:not(:disabled) {
-  background-color: var(--color-mimo-blue-hover);
+  background-color: #2D2D2D;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(22, 133, 213, 0.42);
+  box-shadow: 0 6px 20px rgba(25, 25, 25, 0.32);
 }
 
 .btn-primary:active:not(:disabled) {
-  background-color: var(--color-mimo-blue-active);
+  background-color: #0A0A0A;
   transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(22, 133, 213, 0.3);
+  box-shadow: 0 2px 8px rgba(25, 25, 25, 0.2);
 }
 
 .btn-primary:focus-visible {
   outline: none;
-  box-shadow: var(--shadow-blue-glow);
+  box-shadow: var(--shadow-black-glow);
 }
 
 .btn-primary:disabled {
-  opacity: 0.75;
+  opacity: 0.7;
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
@@ -944,7 +946,7 @@ body {
 
 /* Submitted Feedback Summary Card inside Success */
 .success-summary {
-  background-color: var(--color-cream-light);
+  background-color: #FAF8F5;
   border: 1.5px solid var(--color-border-warm);
   border-radius: var(--radius-md);
   padding: 1.25rem;
@@ -978,12 +980,13 @@ body {
 }
 
 .summary-stars {
-  color: var(--color-star-gold);
+  color: var(--color-caramel);
   display: inline-flex;
   align-items: center;
   gap: 2px;
 }
 
+/* Secondary Action Button (Using MIMO Blue Sparingly) */
 .btn-secondary {
   display: inline-flex;
   align-items: center;
@@ -992,9 +995,9 @@ body {
   font-family: inherit;
   font-size: 0.9375rem;
   font-weight: 700;
-  color: var(--color-deep-brown);
-  background-color: var(--color-cream);
-  border: 1.5px solid var(--color-caramel);
+  color: var(--color-mimo-blue);
+  background-color: var(--color-white);
+  border: 1.5px solid var(--color-border-warm);
   border-radius: var(--radius-md);
   padding: 0.75rem 1.5rem;
   cursor: pointer;
@@ -1002,16 +1005,17 @@ body {
 }
 
 .btn-secondary:hover {
-  background-color: var(--color-light-beige);
-  border-color: var(--color-deep-brown);
+  background-color: var(--color-mimo-blue-light);
+  border-color: var(--color-mimo-blue);
+  color: var(--color-mimo-blue-hover);
   transform: translateY(-1px);
 }
 
 /* --------------------------------------------------------------------------
-   10. Footer Section (Warm Caramel & Beige Kiosk Notes)
+   10. Footer Section (Warm White, Subtle Borders & Blue Secondary Links)
    -------------------------------------------------------------------------- */
 .site-footer {
-  background-color: var(--color-light-beige);
+  background-color: #FAF8F5;
   border-top: 1.5px solid var(--color-border-warm);
   padding-top: 3rem;
   padding-bottom: 2.5rem;
@@ -1057,7 +1061,7 @@ body {
 }
 
 .footer-link:hover {
-  color: var(--color-deep-brown);
+  color: var(--color-mimo-blue);
 }
 
 .footer-bottom {
@@ -1077,7 +1081,7 @@ body {
   gap: 0.375rem;
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--color-deep-brown);
+  color: var(--color-charcoal);
   background-color: var(--color-white);
   border: 1px solid var(--color-border-warm);
   padding: 0.25rem 0.625rem;
