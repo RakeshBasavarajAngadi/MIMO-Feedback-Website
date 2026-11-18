@@ -1,62 +1,74 @@
 /* ==========================================================================
    MIMO Feedback Collection Website - Design System & Stylesheet
-   Theme: Official Physical MIMO Printing / Xerox Kiosk Brand Identity
-   New Brand Colour Palette:
-     - Kiosk Caramel Orange: #C47A43
-     - Dark Caramel:         #A65F32
-     - Warm White Base:      #F7F5F3
-     - Deep Black:           #191919
-     - MIMO Blue Accent:     #2876B7
-     - Pure White:           #FFFFFF
+   Theme: Approved Caramel & Cream Brand Identity
+   Approved Brand Colour Palette:
+     - Main Background:               #FFF1E3
+     - Warm Creamy Orange:            #FCE3CC
+     - Soft Peach Gradient:           #F7D8BD
+     - Secondary Warm Cream:          #FFF8F1
+     - Card Background:               #FFFDFC
+     - Warm Cream:                    #F7F0E8
+     - Soft Peach:                    #FCEBDD
+     - Peach:                         #F4E2D2
+     - Primary Caramel:               #C47A43
+     - Dark Caramel:                  #A65F32
+     - Deep Espresso Text:            #302016
+     - Warm White Cards:              #FFFDFC
+     - Warm Borders:                  #EADBCC
+     - Botanical Green Foliage:       #6E946A, #4E734A, #365433, #9BBF96
    Brand Slogans: "MAKE IT REAL" • "PRINT MADE EASY"
-   Floral Branding: Botanical White Lilies with Dark Charcoal Leaves
+   Floral Branding: Botanical White Lilies with Natural Green Foliage & Caramel
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
    1. Design Tokens & CSS Variables
    -------------------------------------------------------------------------- */
 :root {
-  /* Physical Kiosk Brand Colors */
-  --color-caramel: #C47A43;            /* Kiosk Caramel Orange */
-  --color-caramel-hover: #B36B36;      /* Slightly deeper caramel hover */
-  --color-dark-caramel: #A65F32;       /* Dark Caramel Accent */
-  --color-bg-base: #F7F5F3;            /* Warm White Base Background */
-  --color-bg-secondary: #EFECE8;       /* Warm White Secondary */
-  --color-surface-card: #FFFFFF;       /* Pure White Card Surface for Contrast */
-  --color-charcoal: #191919;           /* Deep Black Primary Text & Headings */
-  --color-charcoal-muted: #424242;     /* Charcoal Secondary Typography */
-  --color-charcoal-subtle: #757575;    /* Subtle / Placeholder Text */
-  --color-mimo-blue: #2876B7;          /* MIMO Blue Accent (used sparingly) */
-  --color-mimo-blue-hover: #1E5C91;    /* Digital Blue Hover State */
-  --color-mimo-blue-active: #15456F;   /* Digital Blue Active State */
-  --color-mimo-blue-light: #EEF5FA;    /* Soft blue tint */
-  --color-white: #FFFFFF;              /* Crisp Pure White Surface */
+  /* Approved Caramel & Cream Brand Palette */
+  --color-bg-base: #FFF1E3;            /* Main background */
+  --color-creamy-orange: #FCE3CC;      /* Warm creamy orange */
+  --color-peach-gradient: #F7D8BD;     /* Soft peach gradient */
+  --color-warm-cream: #FFF8F1;         /* Secondary warm cream */
+  --color-surface-card: #FFFDFC;       /* Card background */
+  --color-surface-elevated: #FFFFFF;   /* Pure warm white */
+  --color-charcoal: #302016;           /* Deep espresso text & headings */
+  --color-charcoal-muted: #5C473A;     /* Espresso secondary text */
+  --color-charcoal-subtle: #8A786D;    /* Muted espresso placeholder text */
+  --color-caramel: #C47A43;            /* Primary caramel orange */
+  --color-caramel-hover: #A65F32;      /* Dark caramel hover */
+  --color-dark-caramel: #A65F32;       /* Dark caramel */
+  --color-white: #FFFFFF;              /* Crisp white */
 
   /* Neutral Surfaces & Warm Borders */
-  --color-border-warm: #EADBCC;        /* Warm Caramel / Sand Border */
-  --color-border-strong: #D5BFAA;      /* Stronger Sand Border */
-  --color-border-focus: #C47A43;       /* Caramel Orange Input Focus Border */
+  --color-border-warm: #EADBCC;        /* Warm sand / caramel border */
+  --color-border-strong: #D8C4B0;      /* Stronger warm border */
+  --color-border-focus: #C47A43;       /* Caramel Orange input focus border */
 
   /* Star Rating & Semantics */
-  --color-star-gold: #C47A43;          /* Caramel Orange Star */
-  --color-star-gold-hover: #D78A52;    /* Warm Gold Star Preview */
-  --color-star-unselected: #DCD7D0;    /* Warm Grayed Sand Unselected Star */
-  --color-star-stroke: #B8B0A5;        /* Star Stroke */
-  --color-success: #15803D;
+  --color-star-gold: #C47A43;          /* Caramel Orange star */
+  --color-star-gold-hover: #D78A52;    /* Warm gold star preview */
+  --color-star-unselected: #E8DCD1;    /* Soft peach unselected star */
+  --color-star-stroke: #C9B8A7;        /* Warm star outline */
+  --color-success: #2E7D32;
   --color-success-bg: #F0FDF4;
   --color-success-border: #BBF7D0;
-  --color-error: #DC2626;
-  --color-error-bg: #FEF2F2;
-  --color-error-border: #FECACA;
+  --color-error: #C0392B;
+  --color-error-bg: #FDF2F2;
+  --color-error-border: #F8C4C4;
 
-  /* Elevation Shadows with Warm Caramel Undertones */
-  --shadow-warm-sm: 0 1px 3px rgba(25, 25, 25, 0.04), 0 1px 2px rgba(196, 122, 67, 0.04);
-  --shadow-warm-md: 0 4px 14px -2px rgba(196, 122, 67, 0.08), 0 2px 6px -1px rgba(25, 25, 25, 0.03);
-  --shadow-card: 0 16px 40px -10px rgba(196, 122, 67, 0.08), 0 4px 16px rgba(25, 25, 25, 0.03);
-  --shadow-card-hover: 0 22px 48px -10px rgba(196, 122, 67, 0.12), 0 6px 20px rgba(25, 25, 25, 0.05);
-  --shadow-blue-glow: 0 0 0 4px rgba(40, 118, 183, 0.18);
+  /* Botanical Lily Palette */
+  --color-foliage-green: #6E946A;
+  --color-foliage-dark: #4E734A;
+  --color-foliage-deep: #365433;
+  --color-foliage-light: #9BBF96;
+
+  /* Elevation Shadows with Warm Peach & Caramel Undertones */
+  --shadow-warm-sm: 0 2px 6px rgba(48, 32, 22, 0.04), 0 1px 2px rgba(196, 122, 67, 0.04);
+  --shadow-warm-md: 0 6px 18px -2px rgba(196, 122, 67, 0.08), 0 2px 6px -1px rgba(48, 32, 22, 0.03);
+  --shadow-card: 0 16px 40px -10px rgba(196, 122, 67, 0.09), 0 4px 16px rgba(48, 32, 22, 0.03);
+  --shadow-card-hover: 0 22px 48px -10px rgba(196, 122, 67, 0.14), 0 6px 20px rgba(48, 32, 22, 0.05);
   --shadow-caramel-glow: 0 0 0 4px rgba(196, 122, 67, 0.18);
-  --shadow-black-glow: 0 0 0 4px rgba(25, 25, 25, 0.18);
+  --shadow-focus-ring: 0 0 0 4px rgba(196, 122, 67, 0.15);
 
   /* Border Radii */
   --radius-sm: 8px;
@@ -102,8 +114,16 @@ body {
   flex-direction: column;
   position: relative;
   overflow-x: hidden;
-  background-color: var(--color-bg-base); /* Warm White #F7F5F3 */
-  background: var(--color-bg-base);
+  background-color: #FFF1E3;
+  background: 
+    radial-gradient(ellipse at 50% 15%, #F7D8BD 0%, transparent 65%),
+    radial-gradient(circle at 10% 25%, #FCE3CC 0%, transparent 50%),
+    radial-gradient(circle at 90% 30%, #F7D8BD 0%, transparent 45%),
+    radial-gradient(circle at 85% 70%, #FCE3CC 0%, transparent 55%),
+    radial-gradient(circle at 15% 85%, #F7D8BD 0%, transparent 55%),
+    linear-gradient(135deg, #FFF1E3 0%, #FCE3CC 55%, #FFF8F1 100%);
+  background-attachment: fixed;
+  color: var(--color-charcoal);
 }
 
 /* Accessible hidden element utility */
@@ -136,7 +156,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 50;
-  background-color: rgba(247, 245, 243, 0.94);
+  background-color: rgba(255, 241, 227, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1.5px solid var(--color-border-warm);
@@ -188,20 +208,20 @@ body {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background-color: var(--color-mimo-blue);
-  box-shadow: 0 0 0 0 rgba(40, 118, 183, 0.5);
+  background-color: var(--color-caramel);
+  box-shadow: 0 0 0 0 rgba(196, 122, 67, 0.5);
   animation: mimoPulse 2s infinite;
 }
 
 @keyframes mimoPulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(40, 118, 183, 0.5);
+    box-shadow: 0 0 0 0 rgba(196, 122, 67, 0.5);
   }
   70% {
-    box-shadow: 0 0 0 6px rgba(40, 118, 183, 0);
+    box-shadow: 0 0 0 6px rgba(196, 122, 67, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(40, 118, 183, 0);
+    box-shadow: 0 0 0 0 rgba(196, 122, 67, 0);
   }
 }
 
@@ -241,6 +261,28 @@ body {
   border-radius: var(--radius-full);
 }
 
+
+.nav-btn-admin {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 1.05rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-caramel);
+  color: #FFFFFF !important;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(196, 122, 67, 0.25);
+  transition: all var(--transition-fast);
+}
+
+.nav-btn-admin:hover {
+  background-color: var(--color-dark-caramel);
+  box-shadow: 0 4px 14px rgba(196, 122, 67, 0.35);
+  transform: translateY(-1px);
+}
+
 .nav-tag {
   display: inline-flex;
   align-items: center;
@@ -277,15 +319,13 @@ body {
 }
 
 .hero-botanical-left {
-  left: calc(50% - 590px);
-  transform: rotate(-3deg);
-  opacity: 0.88;
+  left: -20px;
+  filter: drop-shadow(0 10px 24px rgba(196, 122, 67, 0.08));
 }
 
 .hero-botanical-right {
-  right: calc(50% - 590px);
-  transform: rotate(3deg);
-  opacity: 0.88;
+  right: -20px;
+  filter: drop-shadow(0 10px 24px rgba(196, 122, 67, 0.08));
 }
 
 .botanical-img {
@@ -303,17 +343,16 @@ body {
 .hero-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.625rem;
-  background-color: var(--color-white);
-  border: 1.5px solid var(--color-caramel);
-  padding: 0.375rem 1rem;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem;
   border-radius: var(--radius-full);
+  background-color: var(--color-peach-soft);
+  border: 1px solid var(--color-border-warm);
   font-size: 0.8125rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: var(--color-charcoal);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--color-caramel);
   margin-bottom: 1.25rem;
-  box-shadow: 0 2px 8px rgba(196, 122, 67, 0.08);
 }
 
 .kiosk-motto {
@@ -331,7 +370,7 @@ body {
   font-weight: 700;
 }
 
-/* Main Heading (Deep Black #191919 with Caramel Orange #C47A43 Highlight) */
+/* Main Heading (Deep Espresso #302016 with Caramel Orange #C47A43 Highlight) */
 .hero-title {
   font-size: clamp(2.25rem, 4.5vw + 1rem, 3.5rem);
   font-weight: 800;
@@ -785,29 +824,29 @@ body {
 
 .btn-primary {
   width: 100%;
-  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.625rem;
-  font-family: inherit;
-  font-size: 1rem;
-  font-weight: 700;
+  gap: 0.65rem;
+  padding: 1rem 1.85rem;
+  background-color: var(--color-caramel);
   color: #FFFFFF;
-  background-color: var(--color-charcoal); /* Deep Black #191919 */
+  font-family: inherit;
+  font-size: 1.0625rem;
+  font-weight: 700;
   border: none;
   border-radius: var(--radius-md);
-  padding: 0.9375rem 1.75rem;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(25, 25, 25, 0.25);
-  transition: all var(--transition-fast);
+  box-shadow: 0 4px 16px rgba(196, 122, 67, 0.28);
+  transition: all var(--transition-normal);
+  position: relative;
   overflow: hidden;
 }
 
 .btn-primary:hover:not(:disabled) {
-  background-color: #2D2D2D;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(25, 25, 25, 0.32);
+  background-color: var(--color-dark-caramel);
+  box-shadow: 0 8px 24px rgba(196, 122, 67, 0.38);
+  transform: translateY(-1px);
 }
 
 .btn-primary:active:not(:disabled) {
@@ -992,34 +1031,127 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  background-color: var(--color-surface-card);
+  color: var(--color-charcoal);
   font-family: inherit;
   font-size: 0.9375rem;
   font-weight: 700;
-  color: var(--color-mimo-blue);
-  background-color: var(--color-white);
   border: 1.5px solid var(--color-border-warm);
   border-radius: var(--radius-md);
-  padding: 0.75rem 1.5rem;
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
 .btn-secondary:hover {
-  background-color: var(--color-mimo-blue-light);
-  border-color: var(--color-mimo-blue);
-  color: var(--color-mimo-blue-hover);
-  transform: translateY(-1px);
+  background-color: var(--color-peach-soft);
+  border-color: var(--color-caramel);
+  color: var(--color-caramel);
+}
+
+
+/* --------------------------------------------------------------------------
+   9.5. About MIMO Section (Caramel & Cream Palette)
+   -------------------------------------------------------------------------- */
+.about-section {
+  padding-top: 3.5rem;
+  padding-bottom: 4.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.about-card {
+  background-color: var(--color-surface-card);
+  border: 1.5px solid var(--color-border-warm);
+  border-radius: var(--radius-xl);
+  padding: 3.5rem 3rem;
+  box-shadow: var(--shadow-card);
+  position: relative;
+}
+
+.about-header {
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+}
+
+.about-eyebrow {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--color-caramel);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.about-title {
+  font-size: clamp(2rem, 3.5vw + 0.5rem, 2.75rem);
+  font-weight: 800;
+  color: var(--color-charcoal);
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+
+.about-highlight {
+  color: var(--color-caramel);
+}
+
+.about-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-charcoal-muted);
+  line-height: 1.65;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.about-feature {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.about-feature-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-peach-soft);
+  color: var(--color-caramel);
+  border: 1px solid var(--color-border-warm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.15rem;
+}
+
+.about-feature-title {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--color-charcoal);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.4rem;
+}
+
+.about-feature-desc {
+  font-size: 0.9375rem;
+  color: var(--color-charcoal-muted);
+  line-height: 1.55;
 }
 
 /* --------------------------------------------------------------------------
    10. Footer Section (Warm White, Subtle Borders & Blue Secondary Links)
    -------------------------------------------------------------------------- */
 .site-footer {
-  background-color: #FAF8F5;
+  background: linear-gradient(180deg, rgba(255, 241, 227, 0.6) 0%, rgba(252, 227, 204, 0.7) 100%);
   border-top: 1.5px solid var(--color-border-warm);
-  padding-top: 3rem;
+  padding-top: 3.5rem;
   padding-bottom: 2.5rem;
   margin-top: auto;
+  position: relative;
+  z-index: 2;
 }
 
 .footer-top {
@@ -1078,21 +1210,20 @@ body {
 .footer-status-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.375rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--color-charcoal);
-  background-color: var(--color-white);
-  border: 1px solid var(--color-border-warm);
-  padding: 0.25rem 0.625rem;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
   border-radius: var(--radius-full);
+  background-color: var(--color-peach-soft);
+  border: 1px solid var(--color-border-warm);
+  font-weight: 600;
+  color: var(--color-charcoal-muted);
 }
 
 .status-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: var(--color-mimo-blue);
+  background-color: #22C55E;
 }
 
 /* --------------------------------------------------------------------------

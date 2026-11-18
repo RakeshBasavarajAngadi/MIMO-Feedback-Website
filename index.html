@@ -27,26 +27,36 @@
   <meta http-equiv="Expires" content="0">
 
   <!-- Stylesheet with Cache-Busting Query -->
-  <link rel="stylesheet" href="css/style.css?v=20261117-caramel">
+  <link rel="stylesheet" href="css/style.css?v=20261118-warm-creamy-orange">
 
   <!-- Critical Brand Color Enforcement (Ensures Immediate Visual Consistency) -->
   <style id="mimo-brand-critical">
     :root {
-      --color-bg-base: #F7F5F3 !important;
-      --color-surface-card: #FFFFFF !important;
-      --color-charcoal: #191919 !important;
+      --color-bg-base: #FFF1E3 !important;
+      --color-creamy-orange: #FCE3CC !important;
+      --color-peach-gradient: #F7D8BD !important;
+      --color-warm-cream: #FFF8F1 !important;
+      --color-surface-card: #FFFDFC !important;
+      --color-charcoal: #302016 !important;
       --color-caramel: #C47A43 !important;
       --color-dark-caramel: #A65F32 !important;
-      --color-mimo-blue: #2876B7 !important;
       --color-border-warm: #EADBCC !important;
       --color-star-gold: #C47A43 !important;
     }
     html, body {
-      background-color: #F7F5F3 !important;
-      background: #F7F5F3 !important;
+      background-color: #FFF1E3 !important;
+      background: 
+        radial-gradient(ellipse at 50% 15%, #F7D8BD 0%, transparent 65%),
+        radial-gradient(circle at 10% 25%, #FCE3CC 0%, transparent 50%),
+        radial-gradient(circle at 90% 30%, #F7D8BD 0%, transparent 45%),
+        radial-gradient(circle at 85% 70%, #FCE3CC 0%, transparent 55%),
+        radial-gradient(circle at 15% 85%, #F7D8BD 0%, transparent 55%),
+        linear-gradient(135deg, #FFF1E3 0%, #FCE3CC 55%, #FFF8F1 100%) !important;
+      background-attachment: fixed !important;
+      color: #302016 !important;
     }
     .hero-title {
-      color: #191919 !important;
+      color: #302016 !important;
     }
     .hero-title-highlight {
       color: #C47A43 !important;
@@ -56,8 +66,11 @@
       -webkit-text-fill-color: transparent !important;
     }
     .btn-primary {
-      background-color: #191919 !important;
+      background-color: #C47A43 !important;
       color: #FFFFFF !important;
+    }
+    .btn-primary:hover:not(:disabled) {
+      background-color: #A65F32 !important;
     }
   </style>
 </head>
@@ -79,9 +92,7 @@
       <nav class="site-nav" aria-label="Main Navigation">
         <a href="#feedback-form-section" class="nav-link active">Share Feedback</a>
         <a href="#why-feedback" class="nav-link">Why Feedback Matters</a>
-        <span class="nav-tag">
-          <span class="kiosk-tag-text">PRINT MADE EASY</span>
-        </span>
+        <a href="#about-section" class="nav-link">About MIMO</a>
       </nav>
     </div>
   </header>
@@ -448,6 +459,61 @@
       </div>
     </div>
   </main>
+
+  <!-- =========================================================================
+       About MIMO Section (Approved Caramel & Cream Pillar Cards)
+       ========================================================================= -->
+  <section class="about-section" id="about-section">
+    <div class="container">
+      <div class="about-card">
+        <div class="about-header text-center">
+          <span class="about-eyebrow">MAKE IT REAL • PRINT MADE EASY</span>
+          <h2 class="about-title">About <span class="about-highlight">MIMO</span></h2>
+          <p class="about-subtitle">
+            MIMO is committed to delivering frictionless, self-service printing kiosks. We believe printing and scanning should be fast, effortless, and accessible wherever you need it.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <!-- Pillar 1 -->
+          <div class="about-feature">
+            <div class="about-feature-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <h4 class="about-feature-title">Intuitive Kiosk Interface</h4>
+            <p class="about-feature-desc">Fast, responsive touchscreen interactions tailored for quick photo printing, document xerox, and mobile uploads.</p>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="about-feature">
+            <div class="about-feature-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <h4 class="about-feature-title">Fast & Dependable</h4>
+            <p class="about-feature-desc">Engineered for swift output, rich color fidelity, and minimal wait times across every kiosk location.</p>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="about-feature">
+            <div class="about-feature-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+              </svg>
+            </div>
+            <h4 class="about-feature-title">Customer-Driven Progress</h4>
+            <p class="about-feature-desc">Every review submitted through this portal directly drives our kiosk updates, UX refinements, and hardware enhancements.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- =========================================================================
        Site Footer
